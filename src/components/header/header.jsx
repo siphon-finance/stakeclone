@@ -1,21 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Typography
-} from '@material-ui/core';
-import { withRouter } from "react-router-dom";
-import { colors } from '../../theme'
+import { Typography } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+import { colors } from '../../theme';
 
-import {
-  CONNECTION_CONNECTED,
-  CONNECTION_DISCONNECTED,
-} from '../../constants'
+import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED } from '../../constants';
 
-import UnlockModal from '../unlock/unlockModal.jsx'
+import UnlockModal from '../unlock/unlockModal.jsx';
 
-import Store from "../../stores";
-const emitter = Store.emitter
-const store = Store.store
+import Store from '../../stores';
+const emitter = Store.emitter;
+const store = Store.store;
 
 const styles = theme => ({
   root: {
@@ -23,51 +18,49 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     [theme.breakpoints.down('sm')]: {
-      marginBottom: '40px'
-    }
+      marginBottom: '40px',
+    },
   },
-  headerV2: {
-    background: colors.white,
-    border: '1px solid '+colors.borderBlue,
-    borderTop: 'none',
+  header: {
+    border: 'none',
     width: '100%',
-    borderRadius: '0px 0px 50px 50px',
     display: 'flex',
-    padding: '24px 32px',
+    padding: '2rem 3rem',
     alignItems: 'center',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'space-between',
-      padding: '16px 24px'
-    }
+      padding: '1rem 2rem',
+    },
   },
   icon: {
     display: 'flex',
     alignItems: 'center',
     flex: 1,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   links: {
-    display: 'flex'
+    display: 'flex',
   },
   link: {
-    padding: '12px 0px',
-    margin: '0px 12px',
+    fontWeight: '900',
+    padding: '.5rem 2rem',
+    borderRadius: '2rem',
+    margin: '0 1rem',
     cursor: 'pointer',
-    '&:hover': {
-      paddingBottom: '9px',
-      borderBottom: "3px solid "+colors.borderBlue,
-    },
-  },
-  title: {
-    textTransform: 'capitalize'
+    '&:hover': { backgroundColor: '#FBF6F0' },
   },
   linkActive: {
-    padding: '12px 0px',
-    margin: '0px 12px',
+    fontWeight: '900',
+    backgroundColor: '#000',
+    color: '#fff',
+    padding: '.5rem 2rem',
+    borderRadius: '2rem',
+    margin: '0 1rem',
     cursor: 'pointer',
-    paddingBottom: '9px',
-    borderBottom: "3px solid "+colors.borderBlue,
+  },
+  socialLink: {
+    margin: '0 1rem',
   },
   account: {
     display: 'flex',
@@ -75,27 +68,29 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     flex: 1,
     [theme.breakpoints.down('sm')]: {
-      flex: '0'
-    }
+      flex: '0',
+    },
   },
   walletAddress: {
-    padding: '12px',
-    border: '2px solid rgb(174, 174, 174)',
-    borderRadius: '50px',
+    padding: '1rem',
+    borderRadius: '.5rem',
+    backgroundColor: '#F8F2EC',
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
     '&:hover': {
-      border: "2px solid "+colors.borderBlue,
-      background: 'rgba(47, 128, 237, 0.1)'
+      background: '#fff',
+      color: '#000',
+    },
+    '&:active': {
+      background: '#000',
+      color: '#fff',
     },
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       position: 'absolute',
-      top: '90px',
-      border: "1px solid "+colors.borderBlue,
-      background: colors.white
-    }
+      top: '5rem',
+    },
   },
   connectedDot: {
     background: colors.compoundGreen,
@@ -104,25 +99,24 @@ const styles = theme => ({
     width: '10px',
     height: '10px',
     marginRight: '3px',
-    marginLeft:'6px'
+    marginLeft: '6px',
   },
   name: {
     paddingLeft: '24px',
     [theme.breakpoints.down('sm')]: {
       display: 'none',
-    }
-  }
+    },
+  },
 });
 
 class Header extends Component {
-
   constructor(props) {
-    super()
+    super();
 
     this.state = {
       account: store.getStore('account'),
-      modalOpen: false
-    }
+      modalOpen: false,
+    };
   }
 
   componentWillMount() {
@@ -136,92 +130,121 @@ class Header extends Component {
   }
 
   connectionConnected = () => {
-    this.setState({ account: store.getStore('account') })
+    this.setState({ account: store.getStore('account') });
   };
 
   connectionDisconnected = () => {
-    this.setState({ account: store.getStore('account') })
-  }
+    this.setState({ account: store.getStore('account') });
+  };
 
   render() {
-    const {
-      classes
-    } = this.props;
+    const { classes } = this.props;
 
-    const {
-      account,
-      modalOpen
-    } = this.state
+    const { account, modalOpen } = this.state;
 
     var address = null;
     if (account.address) {
-      address = account.address.substring(0,6)+'...'+account.address.substring(account.address.length-4,account.address.length)
+      address = account.address.substring(0, 6) + '...' + account.address.substring(account.address.length - 4, account.address.length);
     }
 
     return (
-      <div className={ classes.root }>
-        <div className={ classes.headerV2 }>
-          <div className={ classes.icon }>
+      <div className={classes.root}>
+        <div className={classes.header}>
+          <div className={classes.icon}>
             <img
               alt=""
-              src={ require('../../assets/YFI-logo.png') }
-              height={ '40px' }
-              onClick={ () => { this.nav('') } }
+              src={require('../../assets/beefy.svg')}
+              height={'40px'}
+              onClick={() => {
+                this.nav('');
+              }}
             />
-            <Typography variant={ 'h3'} className={ classes.name } onClick={ () => { this.nav('') } }>ygov.finance</Typography>
+            <Typography
+              variant={'h3'}
+              className={classes.name}
+              onClick={() => {
+                this.nav('');
+              }}
+            >
+              beefy.finance
+            </Typography>
           </div>
-          <div className={ classes.links }>
-            { this.renderLink('staking') }
-            { this.renderLink('vote') }
+          <div className={classes.links}>
+            {this.renderSocial('https://twitter.com/beefyfinance', 'twitter')}
+            {this.renderSocial('https://medium.com/beefyfinance', 'medium')}
+            {this.renderSocial('https://discord.gg/UGyepS9', 'discord')}
+            {this.renderSocial('https://t.me/beefyfinance', 'telegram')}
+            {this.renderSocial('https://github.com/beefyfinance', 'github')}
           </div>
-          <div className={ classes.account }>
-            { address &&
-              <Typography variant={ 'h4'} className={ classes.walletAddress } noWrap onClick={this.addressClicked} >
-                { address }
-                <div className={ classes.connectedDot }></div>
+          <div className={classes.account}>
+            {/* FIXME: check this */}
+            {address && (
+              <Typography variant={'h4'} className={classes.walletAddress} noWrap onClick={this.addressClicked}>
+                {address}
+                <div className={classes.connectedDot}></div>
               </Typography>
-            }
-            { !address &&
-              <Typography variant={ 'h4'} className={ classes.walletAddress } noWrap onClick={this.addressClicked} >
+            )}
+            {!address && (
+              <Typography variant={'h4'} className={classes.walletAddress} noWrap onClick={this.addressClicked}>
                 Connect your wallet
               </Typography>
-            }
+            )}
           </div>
         </div>
-        { modalOpen && this.renderModal() }
+        {modalOpen && this.renderModal()}
       </div>
-    )
+    );
   }
 
-  renderLink = (screen) => {
-    const {
-      classes
-    } = this.props;
+  renderLink = screen => {
+    const { classes } = this.props;
 
     return (
-      <div className={ (window.location.pathname==='/'+screen || (window.location.pathname==='/stake' && screen==='staking')  || (window.location.pathname==='/propose' && screen==='vote') )?classes.linkActive:classes.link } onClick={ () => { this.nav(screen) } }>
-        <Typography variant={'h4'} className={ `title` }>{ screen }</Typography>
+      <div
+        className={
+          window.location.pathname === '/' + screen || (window.location.pathname === '/stake' && screen === 'staking') || (window.location.pathname === '/propose' && screen === 'vote')
+            ? classes.linkActive
+            : classes.link
+        }
+        onClick={() => {
+          this.nav(screen);
+        }}
+      >
+        {screen}
       </div>
-    )
-  }
+    );
+  };
 
-  nav = (screen) => {
-    this.props.history.push('/'+screen)
-  }
+  renderSocial = (url, name) => {
+    const style = {
+      textDecoration: 'none',
+      margin: '0 1rem',
+      display: 'flex',
+      alignItems: 'center',
+    };
+
+    return (
+      <a href={url} style={style} target="_blank" rel="noopener noreferrer">
+        <img alt="" src={require(`../../assets/${name}.svg`)} height={'24px'} />
+      </a>
+    );
+  };
+
+  nav = screen => {
+    this.props.history.push('/' + screen);
+  };
 
   addressClicked = () => {
-    this.setState({ modalOpen: true })
-  }
+    this.setState({ modalOpen: true });
+  };
 
   closeModal = () => {
-    this.setState({ modalOpen: false })
-  }
+    this.setState({ modalOpen: false });
+  };
 
   renderModal = () => {
-    return (
-      <UnlockModal closeModal={ this.closeModal } modalOpen={ this.state.modalOpen } />
-    )
-  }
+    return <UnlockModal closeModal={this.closeModal} modalOpen={this.state.modalOpen} />;
+  };
 }
 
 export default withRouter(withStyles(styles)(Header));

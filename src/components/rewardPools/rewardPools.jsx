@@ -1,35 +1,22 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Typography,
-  Button,
-  Card
-} from '@material-ui/core';
-import { withNamespaces } from 'react-i18next';
+import { Typography, Button } from '@material-ui/core';
 
-import UnlockModal from '../unlock/unlockModal.jsx'
-import Store from "../../stores";
-import { colors } from '../../theme'
+import UnlockModal from '../unlock/unlockModal.jsx';
+import Store from '../../stores';
+import { colors } from '../../theme';
 
-import {
-  ERROR,
-  CONFIGURE_RETURNED,
-  GET_BALANCES,
-  GET_BALANCES_RETURNED,
-  GOVERNANCE_CONTRACT_CHANGED
-} from '../../constants'
+import { CONFIGURE_RETURNED, GET_BALANCES, GET_BALANCES_RETURNED } from '../../constants';
 
 const styles = theme => ({
   root: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    maxWidth: '600px',
+    maxWidth: '900px',
     width: '100%',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: '40px'
+    margin: '0 auto',
   },
   intro: {
     width: '100%',
@@ -37,12 +24,12 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    maxWidth: '400px'
+    maxWidth: '400px',
   },
   introCenter: {
     minWidth: '100%',
     textAlign: 'center',
-    padding: '48px 0px'
+    padding: '48px 0px',
   },
   investedContainer: {
     display: 'flex',
@@ -54,7 +41,7 @@ const styles = theme => ({
     minWidth: '100%',
     [theme.breakpoints.up('md')]: {
       minWidth: '800px',
-    }
+    },
   },
   connectContainer: {
     padding: '12px',
@@ -64,214 +51,199 @@ const styles = theme => ({
     maxWidth: '450px',
     [theme.breakpoints.up('md')]: {
       width: '450',
-    }
-  },
-  actionButton: {
-    '&:hover': {
-      backgroundColor: "#2F80ED",
     },
-    padding: '12px',
-    backgroundColor: "#2F80ED",
-    borderRadius: '1rem',
-    border: '1px solid #E1E1E1',
-    fontWeight: 500,
-    [theme.breakpoints.up('md')]: {
-      padding: '15px',
-    }
   },
   buttonText: {
     fontWeight: '700',
     color: 'white',
   },
-  disaclaimer: {
+  disclaimer: {
     padding: '12px',
-    border: '1px solid rgb(174, 174, 174)',
-    borderRadius: '0.75rem',
-    marginBottom: '24px',
-    background: colors.white,
+    border: '1px solid #F8F2EC',
+    borderRadius: '0',
+    background: '#F8F2EC',
+    marginBottom: '2rem',
+    fontWeight: 900,
+    color: '#000',
   },
   rewardPools: {
     width: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
-    paddingTop: '20px',
-    flexWrap: 'wrap'
   },
   rewardPoolContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-    padding: '28px 30px',
-    borderRadius: '50px',
-    border: '1px solid '+colors.borderBlue,
-    margin: '20px',
-    background: colors.white,
-    minHeight: '300px',
-    minWidth: '200px',
+    width: '260px',
+    padding: '2rem 3rem',
+    marginBottom: '2rem',
+    border: '1px solid #DED9D5',
+    borderRadius: '8px',
+    background: '#FBF6F0',
   },
   title: {
     width: '100%',
     color: colors.darkGray,
     minWidth: '100%',
-    marginLeft: '20px'
+    marginLeft: '20px',
   },
   poolName: {
-    paddingBottom: '20px',
-    color: colors.text
+    paddingBottom: '.2rem',
+    color: '#000',
   },
-  tokensList: {
-    color: colors.darkGray,
+  poolLogo: {
+    width: '16px',
+    marginLeft: '-1rem',
+    marginRight: '.5rem',
+  },
+  poolBrief: {
+    color: '#A19C98',
+    marginBottom: '20px',
+    textDecoration: 'none',
+    '&:hover': { textDecoration: 'underline' },
+  },
+  contractLabel: {
+    color: '#A19C98',
     paddingBottom: '20px',
   },
-  poolWebsite: {
-    color: colors.darkGray,
-    paddingBottom: '20px',
-    textDecoration: 'none'
-  }
-})
+  contractAddress: {
+    color: '#53AEA3',
+    textDecoration: 'none',
+    '&:hover': { textDecoration: 'underline' },
+  },
+  actionButton: {
+    color: '#fff',
+    borderColor: '#000',
+    background: '#000',
+    fontWeight: '900',
+    padding: '.1rem 2rem',
+    '&:hover': {
+      background: '#5A8F69',
+    },
+  },
+});
 
-const emitter = Store.emitter
-const dispatcher = Store.dispatcher
-const store = Store.store
+const emitter = Store.emitter;
+const dispatcher = Store.dispatcher;
+const store = Store.store;
 
 class RewardPools extends Component {
-
   constructor(props) {
-    super()
+    super();
 
-    const account = store.getStore('account')
-    const governanceContractVersion = store.getStore('governanceContractVersion')
-    const rewardPools = store.getStore('rewardPools')
+    const account = store.getStore('account');
+    const rewardPools = store.getStore('rewardPools');
 
     this.state = {
       rewardPools: rewardPools,
       loading: !(account && rewardPools),
       account: account,
-      governanceContractVersion: governanceContractVersion
-    }
+    };
 
-    dispatcher.dispatch({ type: GET_BALANCES, content: {} })
+    dispatcher.dispatch({ type: GET_BALANCES, content: {} });
   }
 
   componentWillMount() {
     emitter.on(CONFIGURE_RETURNED, this.configureReturned);
     emitter.on(GET_BALANCES_RETURNED, this.balancesReturned);
-    emitter.on(GOVERNANCE_CONTRACT_CHANGED, this.setGovernanceContract);
   }
 
   componentWillUnmount() {
     emitter.removeListener(CONFIGURE_RETURNED, this.configureReturned);
     emitter.removeListener(GET_BALANCES_RETURNED, this.balancesReturned);
-    emitter.removeListener(GOVERNANCE_CONTRACT_CHANGED, this.setGovernanceContract);
-  };
-
-  setGovernanceContract = () => {
-    this.setState({ governanceContractVersion: store.getStore('governanceContractVersion') })
   }
 
   balancesReturned = () => {
-    const rewardPools = store.getStore('rewardPools')
-    this.setState({ rewardPools: rewardPools })
-  }
+    const rewardPools = store.getStore('rewardPools');
+    this.setState({ rewardPools: rewardPools });
+  };
 
   configureReturned = () => {
-    this.setState({ loading: false })
-  }
+    this.setState({ loading: false });
+  };
 
   render() {
     const { classes } = this.props;
-    const {
-      value,
-      account,
-      loading,
-      modalOpen,
-    } = this.state
-
-    var address = null;
-    if (account.address) {
-      address = account.address.substring(0,6)+'...'+account.address.substring(account.address.length-4,account.address.length)
-    }
+    const { modalOpen } = this.state;
 
     return (
-      <div className={ classes.root }>
-        <Typography variant={'h5'} className={ classes.disaclaimer }>This project is in beta. Use at your own risk.</Typography>
-        <div className={ classes.rewardPools }>
-          <Typography variant={ 'h3'} className={ classes.title } noWrap>Which tokens would you like to stake?</Typography>
-          {
-            this.renderRewards()
-          }
-        </div>
-        { modalOpen && this.renderModal() }
+      <div className={classes.root}>
+        <Typography variant={'h5'} className={classes.disclaimer}>
+          This project is in Beta. Use with caution and DYOR.
+        </Typography>
+        <div className={classes.rewardPools}>{this.renderRewards()}</div>
+        {modalOpen && this.renderModal()}
       </div>
-    )
+    );
   }
 
   renderRewards = () => {
-    const { rewardPools, governanceContractVersion } = this.state
+    const { rewardPools } = this.state;
 
-    return rewardPools.filter((rewardPool) => {
-      if(['FeeRewards', 'Governance', 'yearn', 'Balancer'].includes(rewardPool.id) && governanceContractVersion === 1) {
-        return true
-      } else if ('GovernanceV2' === rewardPool.id && governanceContractVersion === 2) {
-        return true
-      } else {
-        return false
-      }
-    }).map((rewardPool) => {
-      return this.renderRewardPool(rewardPool)
-    })
-  }
+    return rewardPools.map(rewardPool => {
+      return this.renderRewardPool(rewardPool);
+    });
+  };
 
-  renderRewardPool = (rewardPool) => {
-
-    const { classes } = this.props
+  renderRewardPool = rewardPool => {
+    const { classes } = this.props;
 
     var address = null;
-    let addy = ''
+    let addy = '';
     if (rewardPool.tokens && rewardPool.tokens[0]) {
-      addy = rewardPool.tokens[0].rewardsAddress
-      address = addy.substring(0,6)+'...'+addy.substring(addy.length-4,addy.length)
+      addy = rewardPool.tokens[0].rewardsAddress;
+      address = addy.substring(0, 6) + '...' + addy.substring(addy.length - 4, addy.length);
     }
 
-    return (<div className={ classes.rewardPoolContainer} key={ rewardPool.id } >
-      <Typography variant='h3' className={ classes.poolName }>{ rewardPool.name }</Typography>
-      <Typography variant='h5' className={ classes.poolWebsite }><a href={ rewardPool.link } target="_blank">{ rewardPool.website }</a></Typography>
-      <Typography varian='h4' className={ classes.tokensList } align='center'>
-        Contract Address: <a href={ 'https://etherscan.io/address/'+addy } target="_blank">{ address }</a>
+    return (
+      <div className={classes.rewardPoolContainer} key={rewardPool.id}>
+        <Typography variant="h3" className={classes.poolName}>
+          <img alt={rewardPool.id} className={classes.poolLogo} src={require('../../assets/' + rewardPool.id + '-logo.png')} />
+          {rewardPool.name}
+        </Typography>
+        <a href={rewardPool.link} target="_blank" rel="noopener noreferrer" className={classes.poolBrief}>
+          {rewardPool.brief}
+        </a>
+        <Typography varian="h4" className={classes.contractLabel} align="center">
+          Contract Address:
+          <a href={`https://bscscan.com/address/${addy}`} target="_blank" rel="noopener noreferrer" className={classes.contractAddress}>
+            {` ${address}`}
+          </a>
+        </Typography>
+        <Button
+          className={classes.actionButton}
+          onClick={() => {
+            if (rewardPool.tokens.length > 0) {
+              this.navigateStake(rewardPool);
+            }
+          }}
+        >
+          Open
+        </Button>
+      </div>
+    );
+  };
 
-      </Typography>
-      <Button
-        variant="outlined"
-        color="secondary"
-        onClick={ () => { if(rewardPool.tokens.length > 0) { this.navigateStake(rewardPool) } } }
-      >
-        <Typography variant={ 'h4'}>Open</Typography>
-      </Button>
-    </div>)
-  }
+  navigateStake = rewardPool => {
+    store.setStore({ currentPool: rewardPool });
 
-  navigateStake = (rewardPool) => {
-    store.setStore({ currentPool: rewardPool })
-
-    this.props.history.push('/stake')
-  }
+    this.props.history.push('/stake');
+  };
 
   renderModal = () => {
-    return (
-      <UnlockModal closeModal={ this.closeModal } modalOpen={ this.state.modalOpen } />
-    )
-  }
+    return <UnlockModal closeModal={this.closeModal} modalOpen={this.state.modalOpen} />;
+  };
 
   overlayClicked = () => {
-    this.setState({ modalOpen: true })
-  }
+    this.setState({ modalOpen: true });
+  };
 
   closeModal = () => {
-    this.setState({ modalOpen: false })
-  }
-
+    this.setState({ modalOpen: false });
+  };
 }
 
 export default withRouter(withStyles(styles)(RewardPools));

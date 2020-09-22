@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { useWeb3React } from "@web3-react/core";
+import { useState, useEffect } from 'react';
+import { useWeb3React } from '@web3-react/core';
 
-import { injected } from "../../stores/connectors";
+import { injected } from '../../stores/connectors';
 
 export function useEagerConnect() {
   const { activate, active } = useWeb3React();
@@ -11,7 +11,6 @@ export function useEagerConnect() {
   useEffect(() => {
     injected.isAuthorized().then(isAuthorized => {
       if (isAuthorized) {
-
         activate(injected, undefined, true).catch(() => {
           setTried(true);
         });
@@ -51,15 +50,15 @@ export function useInactiveListener(suppress = false) {
         activate(injected);
       };
 
-      ethereum.on("chainChanged", handleChainChanged);
-      ethereum.on("accountsChanged", handleAccountsChanged);
-      ethereum.on("networkChanged", handleNetworkChanged);
+      ethereum.on('chainChanged', handleChainChanged);
+      ethereum.on('accountsChanged', handleAccountsChanged);
+      ethereum.on('networkChanged', handleNetworkChanged);
 
       return () => {
         if (ethereum.removeListener) {
-          ethereum.removeListener("chainChanged", handleChainChanged);
-          ethereum.removeListener("accountsChanged", handleAccountsChanged);
-          ethereum.removeListener("networkChanged", handleNetworkChanged);
+          ethereum.removeListener('chainChanged', handleChainChanged);
+          ethereum.removeListener('accountsChanged', handleAccountsChanged);
+          ethereum.removeListener('networkChanged', handleNetworkChanged);
         }
       };
     }
