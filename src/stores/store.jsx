@@ -754,18 +754,7 @@ class Store {
   };
 
   _getGasPrice = async () => {
-    try {
-      const url = 'https://gasprice.poa.network/';
-      const priceString = await rp(url);
-      const priceJSON = JSON.parse(priceString);
-      if (priceJSON) {
-        return priceJSON.fast.toFixed(0);
-      }
-      return store.getStore('universalGasPrice');
-    } catch (e) {
-      console.log(e);
-      return store.getStore('universalGasPrice');
-    }
+    return store.getStore('universalGasPrice');
   };
 }
 
