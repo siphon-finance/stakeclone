@@ -21,8 +21,6 @@ import Web3 from 'web3';
 
 import { injected } from './connectors';
 
-const rp = require('request-promise');
-
 const Dispatcher = require('flux').Dispatcher;
 const Emitter = require('events').EventEmitter;
 
@@ -383,7 +381,7 @@ class Store {
       const ethAllowance = web3.utils.fromWei(allowance, 'ether');
 
       if (parseFloat(ethAllowance) < parseFloat(amount)) {
-        await erc20Contract.methods.approve(contract, web3.utils.toWei('999999999999999', 'ether')).send({
+        await erc20Contract.methods.approve(contract, web3.utils.toWei('9999999999', 'ether')).send({
           from: account.address,
           gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
         });
@@ -409,7 +407,7 @@ class Store {
 
     if (parseFloat(ethAllowance) < parseFloat(amount)) {
       erc20Contract.methods
-        .approve(contract, web3.utils.toWei('999999999999999', 'ether'))
+        .approve(contract, web3.utils.toWei('9999999999', 'ether'))
         .send({
           from: account.address,
           gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
@@ -485,14 +483,14 @@ class Store {
     let erc20Contract = new web3.eth.Contract(config.erc20ABI, overwriteAddress ? overwriteAddress : asset.address);
     try {
       if (last) {
-        await erc20Contract.methods.approve(contract, web3.utils.toWei('999999999999999', 'ether')).send({
+        await erc20Contract.methods.approve(contract, web3.utils.toWei('9999999999', 'ether')).send({
           from: account.address,
           gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
         });
         callback();
       } else {
         erc20Contract.methods
-          .approve(contract, web3.utils.toWei('999999999999999', 'ether'))
+          .approve(contract, web3.utils.toWei('9999999999', 'ether'))
           .send({
             from: account.address,
             gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
