@@ -62,6 +62,7 @@ class Store {
           brief: 'Wrapped BNB',
           link: 'https://bscscan.com/token/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
           depositsEnabled: true,
+          totalRewards: 14000,
           tokens: [
             {
               id: 'wbnb',
@@ -75,7 +76,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -86,6 +87,7 @@ class Store {
           brief: 'Ethereum Token',
           link: 'https://ethereum.org',
           depositsEnabled: true,
+          totalRewards: 14000,
           tokens: [
             {
               id: 'eth',
@@ -99,7 +101,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -110,6 +112,7 @@ class Store {
           brief: 'ChainLink Token',
           link: 'https://chain.link',
           depositsEnabled: true,
+          totalRewards: 14000,
           tokens: [
             {
               id: 'link',
@@ -123,7 +126,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -134,6 +137,7 @@ class Store {
           brief: 'C.R.E.A.M.',
           link: 'https://cream.finance',
           depositsEnabled: true,
+          totalRewards: 14000,
           tokens: [
             {
               id: 'cream',
@@ -147,7 +151,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -157,6 +161,7 @@ class Store {
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x1EbF0eE99971c6269062C3b480e8e23B7A74756B',
           depositsEnabled: true,
+          totalRewards: 8000,
           tokens: [
             {
               id: 'bnb-busd',
@@ -170,7 +175,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -180,6 +185,7 @@ class Store {
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x7270Fd3Bfe698Db8bE63B9e63c28fA0bCb3AED8C',
           depositsEnabled: true,
+          totalRewards: 8000,
           tokens: [
             {
               id: 'bnb-sparta',
@@ -193,7 +199,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
-              tvl: 0
+              tvl: 0,
             },
           ],
         },
@@ -346,7 +352,7 @@ class Store {
                 },
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
-                }
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -357,7 +363,7 @@ class Store {
                 token.balance = data[0];
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
-                token.tvl = data[3]
+                token.tvl = data[3];
 
                 callbackInner(null, token);
               }
@@ -483,11 +489,11 @@ class Store {
     try {
       let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
       tvl = parseFloat(tvl) / 10 ** asset.decimals;
-      callback(null, parseFloat(tvl))
+      callback(null, parseFloat(tvl));
     } catch (ex) {
       return callback(ex);
     }
-  }
+  };
 
   _checkIfApprovalIsNeeded = async (asset, account, amount, contract, callback, overwriteAddress) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);

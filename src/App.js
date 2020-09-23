@@ -47,7 +47,6 @@ class App extends Component {
               web3context: { library: { provider: a.provider } },
             });
             emitter.emit(CONNECTION_CONNECTED);
-            console.log(a);
           })
           .catch(e => {
             console.log(e);
@@ -107,16 +106,16 @@ class App extends Component {
           {account && (
             <>
               <Switch>
-                <Route path="/stake">
+                <Route path='/stake'>
                   <Header />
                   <Stake />
                 </Route>
-                <Route path="/staking">
+                <Route path='/staking'>
                   <Header />
                   <RewardsPools />
                 </Route>
-                <Route path="/">
-                  <Redirect to="/staking" />
+                <Route path='/'>
+                  <Redirect to='/staking' />
                 </Route>
               </Switch>
             </>

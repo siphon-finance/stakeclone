@@ -62,11 +62,11 @@ const styles = theme => ({
   },
   overview: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
     padding: '28px 30px',
     borderRadius: '8px',
     border: '1px solid #DED9D5',
-    alignItems: 'center',
     marginTop: '40px',
     width: '100%',
     background: '#FBF6F0',
@@ -74,6 +74,7 @@ const styles = theme => ({
   overviewField: {
     display: 'flex',
     flexDirection: 'column',
+    margin: '0 5px',
   },
   overviewTitle: {
     color: colors.darkGray,
@@ -226,6 +227,20 @@ class Stake extends Component {
     emitter.removeListener(GET_BALANCES_RETURNED, this.balancesReturned);
   }
 
+  calcUserPoolPercentage = () => {
+    const { pool } = this.state;
+    const tvl = pool.tokens[0].tvl;
+    const staked = pool.tokens[0].stakedBalance ? pool.tokens[0].stakedBalance : 0;
+    const poolPercentage = staked ? (staked * 100) / tvl : 0;
+    return poolPercentage.toFixed(2);
+  };
+
+  calcDailyEarnings = () => {
+    const { pool } = this.state;
+    let rewards = ((pool.totalRewards / 60) * this.calcUserPoolPercentage()) / 100;
+    return rewards.toFixed();
+  };
+
   balancesReturned = () => {
     const currentPool = store.getStore('currentPool');
     const pools = store.getStore('rewardPools');
@@ -293,7 +308,7 @@ class Stake extends Component {
 
         <div className={classes.overview}>
           <div className={classes.overviewLogo}>
-            <img alt="" src={require('../../assets/' + pool.id + '-logo.png')} height="48px" />
+            <img alt='' src={require('../../assets/' + pool.id + '-logo.png')} height='48px' />
           </div>
 
           <div className={classes.overviewField}>
@@ -307,7 +322,25 @@ class Stake extends Component {
 
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
-              {pool.tokens[0].stakedBalance ? pool.tokens[0].stakedBalance.toFixed(2) : '0'}
+              {`${pool.tokens[0].rewardsAvailable.toFixed(3)} ${pool.tokens[0].rewardsSymbol}`}
+            </Typography>
+            <Typography variant={'h4'} className={classes.overviewTitle}>
+              Rewards Available
+            </Typography>
+          </div>
+          <div className={classes.overviewField}>
+            <Typography variant={'h3'} className={classes.overviewValue}>
+              {`${this.calcDailyEarnings()} ${pool.tokens[0].rewardsSymbol}`}
+            </Typography>
+            <Typography variant={'h4'} className={classes.overviewTitle}>
+              Current Daily Rate
+            </Typography>
+          </div>
+        </div>
+        <div className={classes.overview}>
+          <div className={classes.overviewField}>
+            <Typography variant={'h3'} className={classes.overviewValue}>
+              {`${pool.tokens[0].stakedBalance ? pool.tokens[0].stakedBalance.toFixed(2) : '0'} ${pool.name}`}
             </Typography>
             <Typography variant={'h4'} className={classes.overviewTitle}>
               Currently Staked
@@ -316,10 +349,19 @@ class Stake extends Component {
 
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
-              {`${pool.tokens[0].rewardsAvailable.toFixed(3)} ${pool.tokens[0].rewardsSymbol}`}
+              {`${pool.tokens[0].tvl.toFixed()} ${pool.name}`}
             </Typography>
             <Typography variant={'h4'} className={classes.overviewTitle}>
-              Rewards Available
+              Total Value Locked
+            </Typography>
+          </div>
+
+          <div className={classes.overviewField}>
+            <Typography variant={'h3'} className={classes.overviewValue}>
+              {`${this.calcUserPoolPercentage()}%`}
+            </Typography>
+            <Typography variant={'h4'} className={classes.overviewTitle}>
+              Your Pool %
             </Typography>
           </div>
         </div>
@@ -544,7 +586,7 @@ class Stake extends Component {
         <div className={classes.balances}>
           {type === 'stake' && (
             <Typography
-              variant="h4"
+              variant='h4'
               onClick={() => {
                 this.setAmount(asset.id, type, asset ? asset.balance : 0);
               }}
@@ -556,7 +598,7 @@ class Stake extends Component {
           )}
           {type === 'unstake' && (
             <Typography
-              variant="h4"
+              variant='h4'
               onClick={() => {
                 this.setAmount(asset.id, type, asset ? asset.stakedBalance : 0);
               }}
@@ -576,19 +618,19 @@ class Stake extends Component {
             value={amount}
             error={amountError}
             onChange={this.onChange}
-            placeholder="0.00"
+            placeholder='0.00'
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end" className={classes.inputAdornment}>
-                  <Typography variant="h3" className={''}>
+                <InputAdornment position='end' className={classes.inputAdornment}>
+                  <Typography variant='h3' className={''}>
                     {asset.symbol}
                   </Typography>
                 </InputAdornment>
               ),
               startAdornment: (
-                <InputAdornment position="end" className={classes.inputAdornment}>
+                <InputAdornment position='end' className={classes.inputAdornment}>
                   <div className={classes.assetIcon}>
-                    <img alt="" src={require('../../assets/' + asset.symbol + '-logo.png')} height="30px" />
+                    <img alt='' src={require('../../assets/' + asset.symbol + '-logo.png')} height='30px' />
                   </div>
                 </InputAdornment>
               ),
