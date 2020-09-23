@@ -202,7 +202,7 @@ class Header extends Component {
     return (
       <div
         className={
-          window.location.pathname === '/' + screen || (window.location.pathname === '/stake' && screen === 'staking') || (window.location.pathname === '/propose' && screen === 'vote')
+          window.location.pathname === '/' + screen || (window.location.pathname === '/stake' && screen === 'staking')
             ? classes.linkActive
             : classes.link
         }
