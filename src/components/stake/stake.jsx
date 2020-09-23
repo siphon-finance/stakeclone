@@ -237,8 +237,9 @@ class Stake extends Component {
 
   calcDailyEarnings = () => {
     const { pool } = this.state;
-    let rewards = ((pool.totalRewards / 60) * this.calcUserPoolPercentage()) / 100;
-    return rewards.toFixed();
+    const dailyRewards = pool.totalRewards / 60;
+    const userDailyRewards = (dailyRewards * this.calcUserPoolPercentage()) / 100;
+    return userDailyRewards.toFixed(3);
   };
 
   balancesReturned = () => {
@@ -319,6 +320,14 @@ class Stake extends Component {
               Your Balance
             </Typography>
           </div>
+          <div className={classes.overviewField}>
+            <Typography variant={'h3'} className={classes.overviewValue}>
+              {pool.tokens[0].stakedBalance ? pool.tokens[0].stakedBalance.toFixed(2) : '0'}
+            </Typography>
+            <Typography variant={'h4'} className={classes.overviewTitle}>
+              Currently Staked
+            </Typography>
+          </div>
 
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
@@ -328,25 +337,9 @@ class Stake extends Component {
               Rewards Available
             </Typography>
           </div>
-          <div className={classes.overviewField}>
-            <Typography variant={'h3'} className={classes.overviewValue}>
-              {`${this.calcDailyEarnings()} ${pool.tokens[0].rewardsSymbol}`}
-            </Typography>
-            <Typography variant={'h4'} className={classes.overviewTitle}>
-              Current Daily Rate
-            </Typography>
-          </div>
         </div>
-        <div className={classes.overview}>
-          <div className={classes.overviewField}>
-            <Typography variant={'h3'} className={classes.overviewValue}>
-              {`${pool.tokens[0].stakedBalance ? pool.tokens[0].stakedBalance.toFixed(2) : '0'} ${pool.name}`}
-            </Typography>
-            <Typography variant={'h4'} className={classes.overviewTitle}>
-              Currently Staked
-            </Typography>
-          </div>
 
+        <div className={classes.overview}>
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
               {`${pool.tokens[0].tvl.toFixed()} ${pool.name}`}
@@ -355,13 +348,20 @@ class Stake extends Component {
               Total Value Locked
             </Typography>
           </div>
-
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
               {`${this.calcUserPoolPercentage()}%`}
             </Typography>
             <Typography variant={'h4'} className={classes.overviewTitle}>
               Your Pool %
+            </Typography>
+          </div>
+          <div className={classes.overviewField}>
+            <Typography variant={'h3'} className={classes.overviewValue}>
+              {`${this.calcDailyEarnings()} ${pool.tokens[0].rewardsSymbol}`}
+            </Typography>
+            <Typography variant={'h4'} className={classes.overviewTitle}>
+              Current Daily Rate
             </Typography>
           </div>
         </div>
