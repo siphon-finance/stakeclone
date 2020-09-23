@@ -75,6 +75,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -98,6 +99,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -121,6 +123,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -144,6 +147,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -166,6 +170,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -188,6 +193,7 @@ class Store {
               balance: 0,
               stakedBalance: 0,
               rewardsAvailable: 0,
+              tvl: 0
             },
           ],
         },
@@ -273,6 +279,9 @@ class Store {
                 callbackInnerInner => {
                   this._getRewardsAvailable(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getTotalValueLocked(web3, token, account, callbackInnerInner);
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -283,6 +292,7 @@ class Store {
                 token.balance = data[0];
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
+                token.tvl = data[3];
 
                 callbackInner(null, token);
               }
@@ -334,6 +344,9 @@ class Store {
                 callbackInnerInner => {
                   this._getRewardsAvailable(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getTotalValueLocked(web3, token, account, callbackInnerInner);
+                }
               ],
               (err, data) => {
                 if (err) {
@@ -344,6 +357,7 @@ class Store {
                 token.balance = data[0];
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
+                token.tvl = data[3]
 
                 callbackInner(null, token);
               }
@@ -463,6 +477,17 @@ class Store {
       return callback(ex);
     }
   };
+
+  _getTotalValueLocked = async (web3, asset, account, callback) => {
+    let lpTokenContract = new web3.eth.Contract(asset.abi, asset.address);
+    try {
+      let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      tvl = parseFloat(tvl) / 10 ** asset.decimals;
+      callback(null, parseFloat(tvl))
+    } catch (ex) {
+      return callback(ex);
+    }
+  }
 
   _checkIfApprovalIsNeeded = async (asset, account, amount, contract, callback, overwriteAddress) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
