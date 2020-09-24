@@ -32,7 +32,7 @@ class Store {
     this.store = {
       votingStatus: false,
       currentBlock: 0,
-      universalGasPrice: '50',
+      universalGasPrice: '20',
       account: {},
       web3: null,
       connectorsByName: {
