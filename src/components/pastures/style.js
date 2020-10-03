@@ -5,9 +5,6 @@ export const PasturesContainer = styled.div`
   
   @media only screen and (min-width: 769px) {
     display: block;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
   }
 `;
 
