@@ -12,6 +12,7 @@ import Stake from './components/stake';
 import RewardsPools from './components/rewardPools';
 import Header from './components/header';
 import Footer from './components/footer';
+import Pastures from './components/pastures/pastures';
 
 import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONFIGURE, CONFIGURE_RETURNED, GET_BALANCES_PERPETUAL, GET_BALANCES_PERPETUAL_RETURNED } from './constants';
 
@@ -111,11 +112,13 @@ class App extends Component {
                   <Header />
                   <Stake />
                   <Footer />
+                  <Pastures />
                 </Route>
                 <Route path='/staking'>
                   <Header />
                   <RewardsPools />
                   <Footer />
+                  <Pastures />
                 </Route>
                 <Route path='/'>
                   <Redirect to='/staking' />

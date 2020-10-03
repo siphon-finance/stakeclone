@@ -43,9 +43,7 @@ const BrandIcon = (p) => {
   return (<LinkIcon className={`fab fa-${p.type}`}></LinkIcon>);
 }
 
-const LinkLabel = styled.span`
-
-`;
+const LinkLabel = styled.span``;
 
 export {
   Container,
