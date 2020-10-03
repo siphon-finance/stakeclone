@@ -57,15 +57,6 @@ const styles = theme => ({
     fontWeight: '700',
     color: 'white',
   },
-  disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#F8F2EC',
-    marginBottom: '2rem',
-    fontWeight: 900,
-    color: '#000',
-  },
   rewardPools: {
     width: '100%',
     display: 'flex',
@@ -171,9 +162,6 @@ class RewardPools extends Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Use with caution and DYOR.
-        </Typography>
         <div className={classes.rewardPools}>{this.renderRewards()}</div>
         {modalOpen && this.renderModal()}
       </div>
