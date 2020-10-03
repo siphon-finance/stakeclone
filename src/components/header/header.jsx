@@ -170,11 +170,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            {this.renderSocial('https://twitter.com/beefyfinance', 'twitter')}
-            {this.renderSocial('https://medium.com/beefyfinance', 'medium')}
-            {this.renderSocial('https://discord.gg/yq8wfHd', 'discord')}
-            {this.renderSocial('https://t.me/beefyfinance', 'telegram')}
-            {this.renderSocial('https://github.com/beefyfinance', 'github')}
+            <Typography variant={'h5'} className={classes.disclaimer}>
+              This project is in Beta. Use with caution and DYOR.
+            </Typography>
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}

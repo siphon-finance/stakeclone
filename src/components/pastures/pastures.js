@@ -11,9 +11,9 @@ const Footer = () => {
   return (
     <Pastures>
       <PastureLeft />
+      <PastureRight />
       <PastureCenterBg />
       <PastureCenterFg />
-      <PastureRight />
     </Pastures>
   );
 }

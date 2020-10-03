@@ -292,9 +292,6 @@ class Stake extends Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Use with caution and DYOR.
-        </Typography>
         <div className={classes.intro}>
           <Button
             className={classes.actionButton}
