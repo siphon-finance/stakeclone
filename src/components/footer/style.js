@@ -1,3 +1,4 @@
+import React  from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -16,13 +17,28 @@ const Title = styled.div`
   
 `;
 
-const Link = styled.div`
+const Link = styled.a`
   
+`;
+
+const LinkIcon = (p) => {
+  return (<i class={`fas fa-${p.type}`}></i>);
+}
+
+const BrandIcon = (p) => {
+  return (<i class={`fab fa-${p.type}`}></i>);
+}
+
+const LinkLabel = styled.span`
+
 `;
 
 export {
   Container,
   Column,
   Title,
-  Link
+  Link,
+  LinkIcon,
+  BrandIcon,
+  LinkLabel,
 };
