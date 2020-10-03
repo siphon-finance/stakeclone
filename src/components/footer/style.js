@@ -1,12 +1,15 @@
-import React  from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 2rem auto 10rem;
   max-width: 40rem;
+  margin: 2rem auto 1rem;
+  @media only screen and (min-width: 769px) {
+    margin: 2rem auto 10rem;
+  }
 `;
 
 const Column = styled.div`
@@ -17,17 +20,17 @@ const Column = styled.div`
 const Title = styled.div`
   font-weight: 900;
   font-size: 1.2rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 `;
 
 const Link = styled.a`
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   font-weight: 400;
   color: #000;
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;  
+    text-decoration: underline;
   }
 `;
 
@@ -36,22 +39,14 @@ const LinkIcon = styled.i`
   min-width: 24px;
 `;
 
-const FAIcon = (p) => {
-  return (<LinkIcon className={`fas fa-${p.type}`}></LinkIcon>);
-}
+const FAIcon = p => {
+  return <LinkIcon className={`fas fa-${p.type}`}></LinkIcon>;
+};
 
-const BrandIcon = (p) => {
-  return (<LinkIcon className={`fab fa-${p.type}`}></LinkIcon>);
-}
+const BrandIcon = p => {
+  return <LinkIcon className={`fab fa-${p.type}`}></LinkIcon>;
+};
 
 const LinkLabel = styled.span``;
 
-export {
-  Container,
-  Column,
-  Title,
-  Link,
-  FAIcon,
-  BrandIcon,
-  LinkLabel,
-};
+export { Container, Column, Title, Link, FAIcon, BrandIcon, LinkLabel };
