@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 const Pastures = styled.div`
-  position: fixed;
+  minHeight: '100vh',
   display: none;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
-
   @media only screen and (min-width: 769px) {
-    & { display: block; }
+    & {
+      display: block;
+    }
   }
 `;
 
@@ -21,9 +16,8 @@ const PastureLeft = styled.div`
   left: -30rem;
   width: 50rem;
   height: 50rem;
-  
   border-radius: 50%;
-  background-color: #78B388;
+  background-color: #78b388;
 `;
 
 const PastureCenterBg = styled.div`
@@ -32,9 +26,9 @@ const PastureCenterBg = styled.div`
   left: -25vw;
   width: 100vw;
   height: 30rem;
-  
+
   border-radius: 50%;
-  background-color: #5A8F69;
+  background-color: #5a8f69;
 `;
 
 const PastureCenterFg = styled.div`
@@ -43,9 +37,9 @@ const PastureCenterFg = styled.div`
   right: -15vw;
   width: 70vw;
   height: 30rem;
-  
+
   border-radius: 50%;
-  background-color: #78B388;
+  background-color: #78b388;
 `;
 
 const PastureRight = styled.div`
@@ -54,15 +48,9 @@ const PastureRight = styled.div`
   right: -40rem;
   width: 60rem;
   height: 60rem;
-  
+
   border-radius: 50%;
-  background-color: #5A8F69;
+  background-color: #5a8f69;
 `;
 
-export {
-  Pastures,
-  PastureLeft,
-  PastureCenterBg,
-  PastureCenterFg,
-  PastureRight,
-};
+export { Pastures, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight };
