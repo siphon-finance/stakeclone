@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight, Cows } from './style';
+import React, { useEffect, useState } from 'react';
+import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight } from './style';
 import Cow from '../cow';
 
 const Pastures = () => {

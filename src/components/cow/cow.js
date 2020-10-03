@@ -11,12 +11,13 @@ const Cow = ({ total, index }) => {
     const d = Math.random() < 0.5 ? -1 : 1;
 
     setDimensions({ x, y, w, d });
-  }, []);
+  }, [total, index]);
 
   if (!dimensions) return null;
 
   return (
     <img
+      alt='cow'
       src={require('../../assets/beefy.svg')}
       style={{
         position: 'absolute',
