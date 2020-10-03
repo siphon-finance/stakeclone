@@ -6,9 +6,9 @@ const Container = styled.section`
   flex-direction: row;
   justify-content: space-around;
   max-width: 40rem;
-  margin: 2rem auto 1rem;
+  margin: 2rem auto;
   @media only screen and (min-width: 769px) {
-    margin: 2rem auto 10rem;
+    margin: 2rem auto 8rem;
   }
 `;
 
