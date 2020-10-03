@@ -51,15 +51,6 @@ const styles = theme => ({
       width: '450',
     },
   },
-  disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#F8F2EC',
-    marginBottom: '2rem',
-    fontWeight: 900,
-    color: '#000',
-  },
   overview: {
     display: 'flex',
     flexWrap: 'wrap',

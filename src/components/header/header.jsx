@@ -107,6 +107,14 @@ const styles = theme => ({
       display: 'none',
     },
   },
+  disclaimer: {
+    padding: '12px',
+    border: '1px solid #F8F2EC',
+    borderRadius: '0',
+    background: '#F8F2EC',
+    fontWeight: 900,
+    color: '#000',
+  },
 });
 
 class Header extends Component {
