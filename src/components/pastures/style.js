@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
-const Pastures = styled.div`
-  minHeight: '100vh',
+export const PasturesContainer = styled.div`
   display: none;
   @media only screen and (min-width: 769px) {
-    & {
-      display: block;
-    }
+    display: block;
   }
 `;
 
-const PastureLeft = styled.div`
+export const PastureLeft = styled.div`
   position: absolute;
   bottom: -40rem;
   left: -30rem;
@@ -20,7 +17,7 @@ const PastureLeft = styled.div`
   background-color: #78b388;
 `;
 
-const PastureCenterBg = styled.div`
+export const PastureCenterBg = styled.div`
   position: absolute;
   bottom: -23rem;
   left: -25vw;
@@ -31,7 +28,7 @@ const PastureCenterBg = styled.div`
   background-color: #5a8f69;
 `;
 
-const PastureCenterFg = styled.div`
+export const PastureCenterFg = styled.div`
   position: absolute;
   bottom: -23rem;
   right: -15vw;
@@ -42,7 +39,7 @@ const PastureCenterFg = styled.div`
   background-color: #78b388;
 `;
 
-const PastureRight = styled.div`
+export const PastureRight = styled.div`
   position: absolute;
   bottom: -48rem;
   right: -40rem;
@@ -53,4 +50,9 @@ const PastureRight = styled.div`
   background-color: #5a8f69;
 `;
 
-export { Pastures, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight };
+export const Cows = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;

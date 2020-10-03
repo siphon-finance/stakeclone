@@ -1,24 +1,24 @@
-import React  from 'react';
-import {
-  Pastures,
-  PastureLeft,
-  PastureCenterBg,
-  PastureCenterFg,
-  PastureRight,
-} from './style';
+import React, { useEffect, useRef, useState } from 'react';
+import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight, Cows } from './style';
+import Cow from '../cow';
 
-const Footer = () => {
+const Pastures = () => {
+  const [cows, setCows] = useState([]);
+
+  useEffect(() => {
+    let n = Math.ceil(Math.random() * 3) + 3;
+    setCows(new Array(n).fill(0));
+  }, []);
+
   return (
-    <Pastures>
+    <PasturesContainer>
       <PastureLeft />
       <PastureRight />
       <PastureCenterBg />
       <PastureCenterFg />
-    </Pastures>
+      {cows && cows.map((_, index) => <Cow total={cows.length} index={index} />)}
+    </PasturesContainer>
   );
-}
+};
 
-
-
-
-export default Footer;
+export default Pastures;
