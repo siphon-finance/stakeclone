@@ -1,14 +1,20 @@
 import React  from 'react';
 import {
   Container,
+  Column,
+  Title,
+  Link
 } from './style';
 
 function Footer() {
   return (
     <Container>
       <Column>
-        <Title>Socials</Title>
-        <Link href=""></Link>
+        <Title>Beefy</Title>
+        <Link href="https://beefy.finance">
+        <>website
+          </>
+        </Link>
       </Column>
 
       <Column>
@@ -25,5 +31,3 @@ function Footer() {
 }
 
 export default Footer;
-
-
