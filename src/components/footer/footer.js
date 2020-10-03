@@ -4,7 +4,7 @@ import {
   Column,
   Title,
   Link,
-  LinkIcon,
+  FAIcon,
   BrandIcon,
   LinkLabel,
 } from './style';
@@ -16,7 +16,7 @@ const Footer = () => {
         <Title>beefy.finance</Title>
 
         <Link href="https://beefy.finance">
-          <LinkIcon type='globe' />
+          <FAIcon type='globe' />
           <LinkLabel>website</LinkLabel>
         </Link>
 
@@ -27,24 +27,24 @@ const Footer = () => {
 
         <Link href="https://github.com/beefyfinance">
           <BrandIcon type='github' />
-          <LinkLabel>github</LinkLabel>
+          <LinkLabel>source</LinkLabel>
         </Link>
       </Column>
 
       <Column>
         <Title>products</Title>
         <Link href="https://gov.beefy.finance">
-          <LinkIcon type='landmark' />
+          <FAIcon type='landmark' />
           <LinkLabel>gov</LinkLabel>
         </Link>
 
         <Link href="https://vote.beefy.finance">
-          <LinkIcon type='vote-yea' />
+          <FAIcon type='vote-yea' />
           <LinkLabel>vote</LinkLabel>
         </Link>
 
         <Link href="https://app.beefy.finance">
-          <LinkIcon type='hand-holding-usd' />
+          <FAIcon type='hand-holding-usd' />
           <LinkLabel>app</LinkLabel>
         </Link>
       </Column>
@@ -53,15 +53,15 @@ const Footer = () => {
         <Title>socials</Title>
         <Link href="https://twitter.com/beefyfinance">
           <BrandIcon type='twitter' />
-          <LinkLabel>twitter.com/beefyfinance</LinkLabel>
+          <LinkLabel>twitter</LinkLabel>
         </Link>
         <Link href="https://t.me/beefyfinance">
           <BrandIcon type='telegram' />
-          <LinkLabel>t.me/beefyfinance</LinkLabel>
+          <LinkLabel>telegram</LinkLabel>
         </Link>
         <Link href="https://discord.gg/9xfMvJY">
           <BrandIcon type='discord' />
-          <LinkLabel>discord.gg/9xfMvJY</LinkLabel>
+          <LinkLabel>discord</LinkLabel>
         </Link>
       </Column>
     </Container>

@@ -2,31 +2,45 @@ import React  from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
-  width: 100%;
-  background-color: #f0f;
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2rem auto 10rem;
+  max-width: 40rem;
+`;
+
+const Column = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const Column = styled.div`
-  
-`;
-
 const Title = styled.div`
-  
+  font-weight: 900;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
 `;
 
 const Link = styled.a`
-  
+  margin: .5rem 0;
+  font-weight: 400;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;  
+  }
 `;
 
-const LinkIcon = (p) => {
-  return (<i class={`fas fa-${p.type}`}></i>);
+const LinkIcon = styled.i`
+  margin-right: 1rem;
+`;
+
+const FAIcon = (p) => {
+  return (<LinkIcon className={`fas fa-${p.type}`}></LinkIcon>);
 }
 
 const BrandIcon = (p) => {
-  return (<i class={`fab fa-${p.type}`}></i>);
+  return (<LinkIcon className={`fab fa-${p.type}`}></LinkIcon>);
 }
 
 const LinkLabel = styled.span`
@@ -38,7 +52,7 @@ export {
   Column,
   Title,
   Link,
-  LinkIcon,
+  FAIcon,
   BrandIcon,
   LinkLabel,
 };
