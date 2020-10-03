@@ -32,7 +32,8 @@ const Link = styled.a`
 `;
 
 const LinkIcon = styled.i`
-  margin-right: 1rem;
+  margin-right: .5rem;
+  min-width: 24px;
 `;
 
 const FAIcon = (p) => {
