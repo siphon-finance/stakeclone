@@ -10,9 +10,7 @@ import interestTheme from './theme';
 import Account from './components/account';
 import Stake from './components/stake';
 import RewardsPools from './components/rewardPools';
-import Header from './components/header';
-import Footer from './components/footer';
-import Pastures from './components/pastures/pastures';
+import Layout from './components/layout';
 
 import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONFIGURE, CONFIGURE_RETURNED, GET_BALANCES_PERPETUAL, GET_BALANCES_PERPETUAL_RETURNED } from './constants';
 
@@ -106,25 +104,15 @@ class App extends Component {
             </div>
           )}
           {account && (
-            <>
+            <Layout>
               <Switch>
-                <Route path='/stake'>
-                  <Header />
-                  <Stake />
-                  <Footer />
-                  <Pastures />
-                </Route>
-                <Route path='/staking'>
-                  <Header />
-                  <RewardsPools />
-                  <Footer />
-                  <Pastures />
-                </Route>
+                <Route path='/stake' component={Stake} />
+                <Route path='/staking' component={RewardsPools} />
                 <Route path='/'>
                   <Redirect to='/staking' />
                 </Route>
               </Switch>
-            </>
+            </Layout>
           )}
         </IpfsRouter>
       </MuiThemeProvider>
