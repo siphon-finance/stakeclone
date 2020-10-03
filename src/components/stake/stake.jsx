@@ -18,7 +18,7 @@ const styles = theme => ({
     maxWidth: '600px',
     width: '100%',
     alignItems: 'center',
-    margin: '0 auto 10rem',
+    margin: '0 auto 2rem',
   },
   intro: {
     width: '100%',
