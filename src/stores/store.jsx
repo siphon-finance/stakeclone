@@ -203,6 +203,30 @@ class Store {
             },
           ],
         },
+        {
+          id: 'bifi',
+          name: 'BIFI',
+          brief: 'beefy.finance',
+          link: 'https://bscscan.com/token/0xCa3F508B8e4Dd382eE878A314789373D80A5190A',
+          depositsEnabled: true,
+          totalRewards: 1,
+          tokens: [
+            {
+              id: 'bifi',
+              address: '0x75b4BA20405268B131A5849Cce49ff74fcE3d0c7',
+              symbol: 'BIFI',
+              abi: config.erc20ABI,
+              rewardsAddress: config.bifiPoolAddress,
+              rewardsABI: config.erc20ABI,
+              rewardsSymbol: 'wBNB',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+            },
+          ],
+        },
       ],
     };
 
