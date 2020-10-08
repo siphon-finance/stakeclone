@@ -213,11 +213,11 @@ class Store {
           tokens: [
             {
               id: 'bifi',
-              address: '0x453D4Ba9a2D594314DF88564248497F7D74d6b2C',
-              symbol: 'BIFI',
+              address: '0xCa3F508B8e4Dd382eE878A314789373D80A5190A',
+              symbol: 'bifi',
               abi: config.erc20ABI,
               rewardsAddress: config.bifiPoolAddress,
-              rewardsABI: config.erc20ABI,
+              rewardsABI: config.govPoolABI,
               rewardsSymbol: 'wBNB',
               decimals: 18,
               balance: 0,
