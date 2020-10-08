@@ -5,7 +5,7 @@ const config = {
   creamPoolAddress: '0x38191ea2A077D86B3dF410379F8c0Bb130683116',
   busdLpPoolAddress: '0x1263F0BFfE2D740Ea3279416D0e84943B66958eb',
   spartaLpPoolAddress: '0x2b8C4aD8053b7933CFde936F16aBc55BB5F694c6',
-  bifiPoolAddress: '0x75b4BA20405268B131A5849Cce49ff74fcE3d0c7',
+  bifiPoolAddress: '0x453D4Ba9a2D594314DF88564248497F7D74d6b2C',
 
   govPoolABI: [
     {
