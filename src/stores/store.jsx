@@ -209,7 +209,7 @@ class Store {
           brief: 'beefy.finance',
           link: 'https://bscscan.com/token/0xCa3F508B8e4Dd382eE878A314789373D80A5190A',
           depositsEnabled: true,
-          totalRewards: 1,
+          totalRewards: 0,
           tokens: [
             {
               id: 'bifi',
