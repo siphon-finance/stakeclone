@@ -77,6 +77,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -102,6 +103,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -127,6 +129,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -152,6 +155,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -176,6 +180,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -200,6 +205,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -224,6 +230,7 @@ class Store {
               stakedBalance: 0,
               rewardsAvailable: 0,
               tvl: 0,
+              rewardRate: 0,
             },
           ],
         },
@@ -312,6 +319,9 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getRewardRate(web3, token, account, callbackInnerInner);
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -323,6 +333,7 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
+                token.rewardRate = data[4];
 
                 callbackInner(null, token);
               }
@@ -377,6 +388,9 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getRewardRate(web3, token, account, callbackInnerInner);
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -388,6 +402,7 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
+                token.rewardRate = data[4];
 
                 callbackInner(null, token);
               }
@@ -514,6 +529,17 @@ class Store {
       let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
       tvl = parseFloat(tvl) / 10 ** asset.decimals;
       callback(null, parseFloat(tvl));
+    } catch (ex) {
+      return callback(ex);
+    }
+  };
+
+  _getRewardRate = async (web3, asset, account, callback) => {
+    let rewardsPoolContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    try {
+      let rewardRate = await rewardsPoolContract.methods.rewardRate().call({ from: account.address });
+      rewardRate = parseFloat(rewardRate) / 10 ** asset.decimals;
+      callback(null, parseFloat(rewardRate));
     } catch (ex) {
       return callback(ex);
     }
