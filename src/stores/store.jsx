@@ -319,6 +319,9 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getTotalRewards(web3, token, account, callbackInnerInner);
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -330,6 +333,7 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
+                pool.totalRewards = data[4];
 
                 callbackInner(null, token);
               }
@@ -384,6 +388,9 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
+                callbackInnerInner => {
+                  this._getTotalRewards(web3, token, account, callbackInnerInner);
+                },
               ],
               (err, data) => {
                 if (err) {
@@ -395,6 +402,7 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
+                pool.totalRewards = data[4];
 
                 callbackInner(null, token);
               }
@@ -521,6 +529,17 @@ class Store {
       let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
       tvl = parseFloat(tvl) / 10 ** asset.decimals;
       callback(null, parseFloat(tvl));
+    } catch (ex) {
+      return callback(ex);
+    }
+  };
+
+  _getTotalRewards = async (web3, asset, account, callback) => {
+    let rewardsTokenContract = new web3.eth.Contract(asset.abi, asset.rewardsToken);
+    try {
+      let totalRewards = await rewardsTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      totalRewards = parseFloat(totalRewards) / 10 ** 18;
+      callback(null, parseFloat(totalRewards));
     } catch (ex) {
       return callback(ex);
     }
