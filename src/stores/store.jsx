@@ -62,7 +62,6 @@ class Store {
           brief: 'Wrapped BNB',
           link: 'https://bscscan.com/token/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'wbnb',
@@ -88,7 +87,6 @@ class Store {
           brief: 'Ethereum Token',
           link: 'https://ethereum.org',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'eth',
@@ -114,7 +112,6 @@ class Store {
           brief: 'ChainLink Token',
           link: 'https://chain.link',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'link',
@@ -140,7 +137,6 @@ class Store {
           brief: 'C.R.E.A.M.',
           link: 'https://cream.finance',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'cream',
@@ -165,7 +161,6 @@ class Store {
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x1EbF0eE99971c6269062C3b480e8e23B7A74756B',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'bnb-busd',
@@ -190,7 +185,6 @@ class Store {
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x7270Fd3Bfe698Db8bE63B9e63c28fA0bCb3AED8C',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'bnb-sparta',
@@ -215,7 +209,6 @@ class Store {
           brief: 'beefy.finance',
           link: 'https://bscscan.com/token/0xCa3F508B8e4Dd382eE878A314789373D80A5190A',
           depositsEnabled: true,
-          totalRewards: 0,
           tokens: [
             {
               id: 'bifi',
@@ -319,9 +312,6 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
-                callbackInnerInner => {
-                  this._getTotalRewards(web3, token, account, callbackInnerInner);
-                },
               ],
               (err, data) => {
                 if (err) {
@@ -333,7 +323,6 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
-                pool.totalRewards = data[4];
 
                 callbackInner(null, token);
               }
@@ -388,9 +377,6 @@ class Store {
                 callbackInnerInner => {
                   this._getTotalValueLocked(web3, token, account, callbackInnerInner);
                 },
-                callbackInnerInner => {
-                  this._getTotalRewards(web3, token, account, callbackInnerInner);
-                },
               ],
               (err, data) => {
                 if (err) {
@@ -402,7 +388,6 @@ class Store {
                 token.stakedBalance = data[1];
                 token.rewardsAvailable = data[2];
                 token.tvl = data[3];
-                pool.totalRewards = data[4];
 
                 callbackInner(null, token);
               }
@@ -529,17 +514,6 @@ class Store {
       let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
       tvl = parseFloat(tvl) / 10 ** asset.decimals;
       callback(null, parseFloat(tvl));
-    } catch (ex) {
-      return callback(ex);
-    }
-  };
-
-  _getTotalRewards = async (web3, asset, account, callback) => {
-    let rewardsTokenContract = new web3.eth.Contract(asset.abi, asset.rewardsToken);
-    try {
-      let totalRewards = await rewardsTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
-      totalRewards = parseFloat(totalRewards) / 10 ** 18;
-      callback(null, parseFloat(totalRewards));
     } catch (ex) {
       return callback(ex);
     }
