@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
@@ -106,15 +107,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
-  },
-  disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#F8F2EC',
-    fontWeight: 900,
-    color: '#000',
-  },
+  }
 });
 
 class Header extends Component {
@@ -178,9 +171,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            <Typography variant={'h5'} className={classes.disclaimer}>
-              This project is in Beta. Use with caution and DYOR.
-            </Typography>
+            { this.renderLink('gov', 'gov', 'landmark') }
+            { this.renderLink('vote', 'vote', 'vote-yea') }
+            { this.renderLink('app', 'app', 'hand-holding-usd') }
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -202,37 +195,29 @@ class Header extends Component {
     );
   }
 
-  renderLink = screen => {
-    const { classes } = this.props;
+  renderLink = (name, label, icon) => {
+    const Link = styled.a`
+      margin: 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #000;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    `;
+
+    const Icon = styled.i`
+      margin-right: .5rem;
+      min-width: 24px;
+    `;
 
     return (
-      <div
-        className={
-          window.location.pathname === '/' + screen || (window.location.pathname === '/stake' && screen === 'staking')
-            ? classes.linkActive
-            : classes.link
-        }
-        onClick={() => {
-          this.nav(screen);
-        }}
-      >
-        {screen}
-      </div>
-    );
-  };
-
-  renderSocial = (url, name) => {
-    const style = {
-      textDecoration: 'none',
-      margin: '0 1rem',
-      display: 'flex',
-      alignItems: 'center',
-    };
-
-    return (
-      <a href={url} style={style} target="_blank" rel="noopener noreferrer">
-        <img alt="" src={require(`../../assets/${name}.svg`)} height={'24px'} />
-      </a>
+      <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
+        <Icon className={`fas fa-${icon}`} />
+        <span>{label}</span>
+      </Link>
     );
   };
 
