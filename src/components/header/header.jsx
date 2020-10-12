@@ -171,9 +171,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            { this.renderLink('gov', 'gov') }
-            { this.renderLink('vote', 'vote') }
-            { this.renderLink('app', 'app') }
+            { this.renderLink('gov', 'gov', 'landmark') }
+            { this.renderLink('vote', 'vote', 'vote-yea') }
+            { this.renderLink('app', 'app', 'hand-holding-usd') }
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -195,7 +195,7 @@ class Header extends Component {
     );
   }
 
-  renderLink = (name, label) => {
+  renderLink = (name, label, icon) => {
     const Link = styled.a`
       margin: 0 1rem;
       font-size: 1.2rem;
@@ -208,9 +208,15 @@ class Header extends Component {
       }
     `;
 
+    const Icon = styled.i`
+      margin-right: .5rem;
+      min-width: 24px;
+    `;
+
     return (
       <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
-        {label}
+        <Icon className={`fas fa-${icon}`} />
+        <span>{label}</span>
       </Link>
     );
   };
