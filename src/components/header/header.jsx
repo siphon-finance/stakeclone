@@ -179,9 +179,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            { this.renderLink('gov') }
-            { this.renderLink('vote') }
-            { this.renderLink('app') }
+            { this.renderLink('gov', 'gov') }
+            { this.renderLink('vote', 'vote') }
+            { this.renderLink('app', 'app') }
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -203,7 +203,7 @@ class Header extends Component {
     );
   }
 
-  renderLink = (name) => {
+  renderLink = (name, label) => {
     const Link = styled.a`
       margin: 0 1rem;
       font-size: 1.2rem;
@@ -218,7 +218,7 @@ class Header extends Component {
 
     return (
       <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
-        {name}
+        {label}
       </Link>
     );
   };
