@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
@@ -178,9 +179,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            <Typography variant={'h5'} className={classes.disclaimer}>
-              This project is in Beta. Use with caution and DYOR.
-            </Typography>
+            { this.renderLink('gov') }
+            { this.renderLink('vote') }
+            { this.renderLink('app') }
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -202,37 +203,23 @@ class Header extends Component {
     );
   }
 
-  renderLink = screen => {
-    const { classes } = this.props;
+  renderLink = (name) => {
+    const Link = styled.a`
+      margin: 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #000;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    `;
 
     return (
-      <div
-        className={
-          window.location.pathname === '/' + screen || (window.location.pathname === '/stake' && screen === 'staking')
-            ? classes.linkActive
-            : classes.link
-        }
-        onClick={() => {
-          this.nav(screen);
-        }}
-      >
-        {screen}
-      </div>
-    );
-  };
-
-  renderSocial = (url, name) => {
-    const style = {
-      textDecoration: 'none',
-      margin: '0 1rem',
-      display: 'flex',
-      alignItems: 'center',
-    };
-
-    return (
-      <a href={url} style={style} target="_blank" rel="noopener noreferrer">
-        <img alt="" src={require(`../../assets/${name}.svg`)} height={'24px'} />
-      </a>
+      <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
+        {name}
+      </Link>
     );
   };
 
