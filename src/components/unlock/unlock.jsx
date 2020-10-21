@@ -212,8 +212,10 @@ function MyComponent(props) {
         var display = name;
         if (name === 'MetaMask') {
           url = require('../../assets/metamask.png');
+        } else if (name === 'WalletConnect') {
+          url = require('../../assets/walletConnectIcon.svg')
         } else if (name === 'TrustWallet') {
-          url = require('../../assets/trustwallet.png');
+          url = require('../../assets/trustWallet.png')
         }
 
         return (

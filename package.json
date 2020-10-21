@@ -1,7 +1,7 @@
 {
   "homepage": "./",
   "name": "beefy-gov",
-  "version": "0.1.0",
+  "version": "1.1.1",
   "private": true,
   "dependencies": {
     "@ethersproject/providers": "^5.0.5",
@@ -11,6 +11,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@web3-react/core": "^6.1.1",
     "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.1.4",
     "async": "^3.2.0",
     "bignumber.js": "^9.0.0",
     "flux": "^3.1.3",
