@@ -58,7 +58,7 @@ class Store {
       rewardPools: [
         {
           id: 'wbnb',
-          name: 'wBNB',
+          name: 'WBNB',
           brief: 'Wrapped BNB',
           link: 'https://bscscan.com/token/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
           depositsEnabled: true,
