@@ -225,7 +225,7 @@ class Store {
               rewardsToken: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
               rewardsAddress: config.bifiPoolAddress,
               rewardsABI: config.govPoolABI,
-              rewardsSymbol: 'wBNB',
+              rewardsSymbol: 'WBNB',
               decimals: 18,
               balance: 0,
               stakedBalance: 0,
