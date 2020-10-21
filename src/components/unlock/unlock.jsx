@@ -215,7 +215,7 @@ function MyComponent(props) {
         } else if (name === 'WalletConnect') {
           url = require('../../assets/walletConnectIcon.svg')
         } else if (name === 'TrustWallet') {
-          url = require('../../assets/trustWallet.png')
+          url = require('../../assets/trustwallet.png')
         }
 
         return (
