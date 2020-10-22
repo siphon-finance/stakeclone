@@ -15,9 +15,9 @@ const Footer = () => {
       <Column>
         <Title>beefy.finance</Title>
 
-        <Link href="https://beefy.finance" target="_blank">
-          <FAIcon type='globe' />
-          <LinkLabel>website</LinkLabel>
+        <Link href="https://docs.beefy.finance" target="_blank">
+          <FAIcon type='book' />
+          <LinkLabel>docs</LinkLabel>
         </Link>
 
         <Link href="https://medium.com/beefyfinance" target="_blank">
