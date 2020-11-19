@@ -174,6 +174,7 @@ class Header extends Component {
             { this.renderLink('gov', 'gov', 'landmark') }
             { this.renderLink('vote', 'vote', 'vote-yea') }
             { this.renderLink('app', 'app', 'hand-holding-usd') }
+            { this.renderLink('dashboard', 'stats', 'chart-bar')}
             { this.renderLink('docs', 'docs', 'book') }
           </div>
           <div className={classes.account}>
