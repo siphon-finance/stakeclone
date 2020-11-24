@@ -63,7 +63,7 @@ class Store {
           name: 'WBNB',
           brief: 'Wrapped BNB',
           link: 'https://bscscan.com/token/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'wbnb',
@@ -89,7 +89,7 @@ class Store {
           name: 'ETH',
           brief: 'Ethereum Token',
           link: 'https://ethereum.org',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'eth',
@@ -115,7 +115,7 @@ class Store {
           name: 'LINK',
           brief: 'ChainLink Token',
           link: 'https://chain.link',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'link',
@@ -141,7 +141,7 @@ class Store {
           name: 'CREAM',
           brief: 'C.R.E.A.M.',
           link: 'https://cream.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'cream',
@@ -166,7 +166,7 @@ class Store {
           name: 'BNB-BUSD',
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x1EbF0eE99971c6269062C3b480e8e23B7A74756B',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'bnb-busd',
@@ -191,7 +191,7 @@ class Store {
           name: 'BNB-SPARTA',
           brief: 'LP BSCSwap',
           link: 'https://bscswap.info/pair/0x7270Fd3Bfe698Db8bE63B9e63c28fA0bCb3AED8C',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'bnb-sparta',
