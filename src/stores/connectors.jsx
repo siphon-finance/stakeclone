@@ -1,3 +1,4 @@
+import { BscConnector } from '@binance-chain/bsc-connector';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 
@@ -15,4 +16,8 @@ export const walletconnect = new WalletConnectConnector({
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
   pollingInterval: POLLING_INTERVAL,
+});
+
+export const binance = new BscConnector({
+  supportedChainIds: [56],
 });

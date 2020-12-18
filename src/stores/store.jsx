@@ -19,7 +19,7 @@ import {
 } from '../constants';
 import Web3 from 'web3';
 
-import { injected, walletconnect } from './connectors';
+import { binance, injected, walletconnect } from './connectors';
 
 const Dispatcher = require('flux').Dispatcher;
 const Emitter = require('events').EventEmitter;
@@ -38,6 +38,7 @@ class Store {
       connectorsByName: {
         MetaMask: injected,
         TrustWallet: injected,
+        BinanceWallet: binance,
         WalletConnect: walletconnect,
       },
       web3context: null,
