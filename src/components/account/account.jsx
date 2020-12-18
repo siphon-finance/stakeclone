@@ -22,7 +22,7 @@ const styles = theme => ({
   connectHeading: {
     maxWidth: '300px',
     textAlign: 'center',
-    color: '#000',
+    color: 'white',
   },
   connectContainer: {
     padding: '20px',
