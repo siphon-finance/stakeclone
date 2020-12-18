@@ -619,7 +619,7 @@ class Stake extends Component {
               startAdornment: (
                 <InputAdornment position='end' className={classes.inputAdornment}>
                   <div className={classes.assetIcon}>
-                    <img alt='' src={require('../../assets/' + asset.symbol + '-logo.png')} height='30px' />
+                    <img alt='' src={require('../../assets/' + asset.logo)} height='30px' />
                   </div>
                 </InputAdornment>
               ),
