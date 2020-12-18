@@ -69,7 +69,7 @@ class Store {
           tokens: [
             {
               id: 'cake-twt-bnb',
-              logo: 'trust-logo.png',
+              logo: 'twt-bnb.svg',
               address: '0x3b2c93f9455786e74C68648EaaB09B20ce557537',
               symbol: 'mooPancakeTWT-BNB',
               abi: config.erc20ABI,
@@ -97,7 +97,7 @@ class Store {
           tokens: [
             {
               id: 'thugs-drugs-guns',
-              logo: 'thugs-logo.png',
+              logo: 'drugs-v2.png',
               address: '0x8AE31751A226B0C5357a377E53B6DB12bDF5e64d',
               symbol: 'mooDrugsGunsV2',
               abi: config.erc20ABI,
@@ -125,7 +125,7 @@ class Store {
           tokens: [
             {
               id: 'narwhal-thugs-nar',
-              logo: 'nar-logo.png',
+              logo: 'thugs-nar.png',
               address: '0xCa6e313C535B6C355bEeAae296B58a194C3D6044',
               symbol: 'mooNarwhalTHUGS-NAR',
               abi: config.erc20ABI,
