@@ -298,7 +298,7 @@ class Stake extends Component {
 
         <div className={classes.overview}>
           <div className={classes.overviewLogo}>
-            <img alt='' src={require('../../assets/' + pool.id + '-logo.png')} height='48px' />
+            <img alt='' src={require('../../assets/' + pool.logo)} height='48px' />
           </div>
 
           <div className={classes.overviewField}>

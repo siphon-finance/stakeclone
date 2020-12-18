@@ -95,9 +95,8 @@ const styles = theme => ({
     color: '#000',
   },
   poolLogo: {
-    width: '16px',
-    marginLeft: '-1rem',
-    marginRight: '.5rem',
+    width: '80px',
+    margin: '0 auto 16px',
   },
   poolBrief: {
     color: '#A19C98',
@@ -200,8 +199,8 @@ class RewardPools extends Component {
 
     return (
       <div className={classes.rewardPoolContainer} key={rewardPool.id}>
+        <img alt={rewardPool.id} className={classes.poolLogo} src={require('../../assets/' + rewardPool.logo)} />
         <Typography variant="h3" className={classes.poolName}>
-          <img alt={rewardPool.id} className={classes.poolLogo} src={require('../../assets/' + rewardPool.id + '-logo.png')} />
           {rewardPool.name}
         </Typography>
         <a href={rewardPool.link} target="_blank" rel="noopener noreferrer" className={classes.poolBrief}>
