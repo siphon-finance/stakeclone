@@ -1,4 +1,4 @@
-# Beefy Cross-Community Christmas Lottery
+#  Beefy Cross-Community Christmas Lottery
 
 In collaboration with many Binance Smart Chain communities, we’re really excited to announce our Christmas Lottery.
 
