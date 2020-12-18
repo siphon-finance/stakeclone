@@ -200,13 +200,13 @@ class Header extends Component {
   renderLink = (name, label, icon) => {
     const Link = styled.a`
       margin: 0 1rem;
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: 400;
-      color: #000;
+      color: white;
       text-decoration: none;
-
+      transition: all 0.3s ease;
       &:hover {
-        text-decoration: underline;
+        transform: scale(1.1);
       }
     `;
 

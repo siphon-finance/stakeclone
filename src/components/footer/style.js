@@ -19,23 +19,24 @@ const Column = styled.div`
 
 const Title = styled.div`
   font-weight: 900;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
 `;
 
 const Link = styled.a`
   margin: 0.5rem 0;
   font-weight: 400;
-  color: #000;
+  font-size: 1.1rem;
+  color: white;
   text-decoration: none;
-
+  transition: all 0.3s ease;
   &:hover {
-    text-decoration: underline;
+    transform: scale(1.1);
   }
 `;
 
 const LinkIcon = styled.i`
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   min-width: 24px;
 `;
 
