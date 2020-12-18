@@ -76,7 +76,7 @@ const styles = theme => ({
     padding: '12px',
     border: '1px solid #F8F2EC',
     borderRadius: '0',
-    background: '#F8F2EC',
+    background: '#504F69',
     marginBottom: '2rem',
     fontWeight: 900,
     color: '#000',
@@ -148,7 +148,7 @@ class Account extends Component {
           This project is in Beta. Use with caution and DYOR.
         </Typography>
         <div className={classes.connectHeading}>
-          <Typography variant="h3">Connect your wallet to continue</Typography>
+          <Typography variant='h3'>Connect your wallet to continue</Typography>
         </div>
         <div className={classes.connectContainer}>
           <Button className={classes.actionButton} onClick={this.unlockClicked} disabled={loading}>

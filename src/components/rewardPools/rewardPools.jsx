@@ -58,13 +58,12 @@ const styles = theme => ({
     color: 'white',
   },
   disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#F8F2EC',
+    padding: '12px 30px',
+    background: 'rgba(80, 79, 105, 0.4)',
+    borderRadius: '5px',
     marginBottom: '2rem',
-    fontWeight: 900,
-    color: '#000',
+    fontWeight: 600,
+    color: 'white',
   },
   rewardPools: {
     width: '100%',
@@ -82,7 +81,7 @@ const styles = theme => ({
     marginBottom: '2rem',
     border: '1px solid #DED9D5',
     borderRadius: '8px',
-    background: '#FBF6F0',
+    background: '#504F69',
   },
   title: {
     width: '100%',
@@ -92,7 +91,7 @@ const styles = theme => ({
   },
   poolName: {
     paddingBottom: '.2rem',
-    color: '#000',
+    color: 'white',
   },
   poolLogo: {
     width: '80px',
@@ -100,12 +99,12 @@ const styles = theme => ({
   },
   poolBrief: {
     color: '#A19C98',
-    marginBottom: '20px',
+    marginBottom: '22px',
     textDecoration: 'none',
     '&:hover': { textDecoration: 'underline' },
   },
   contractLabel: {
-    color: '#A19C98',
+    color: '#DEDDFF',
     paddingBottom: '20px',
   },
   contractAddress: {
@@ -200,15 +199,15 @@ class RewardPools extends Component {
     return (
       <div className={classes.rewardPoolContainer} key={rewardPool.id}>
         <img alt={rewardPool.id} className={classes.poolLogo} src={require('../../assets/' + rewardPool.logo)} />
-        <Typography variant="h3" className={classes.poolName}>
+        <Typography variant='h3' className={classes.poolName}>
           {rewardPool.name}
         </Typography>
-        <a href={rewardPool.link} target="_blank" rel="noopener noreferrer" className={classes.poolBrief}>
+        <a href={rewardPool.link} target='_blank' rel='noopener noreferrer' className={classes.poolBrief}>
           {rewardPool.brief}
         </a>
-        <Typography varian="h4" className={classes.contractLabel} align="center">
+        <Typography varian='h4' className={classes.contractLabel} align='center'>
           Contract Address:
-          <a href={`https://bscscan.com/address/${addy}`} target="_blank" rel="noopener noreferrer" className={classes.contractAddress}>
+          <a href={`https://bscscan.com/address/${addy}`} target='_blank' rel='noopener noreferrer' className={classes.contractAddress}>
             {` ${address}`}
           </a>
         </Typography>

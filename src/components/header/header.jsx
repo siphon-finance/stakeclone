@@ -75,7 +75,7 @@ const styles = theme => ({
   walletAddress: {
     padding: '1rem',
     borderRadius: '.5rem',
-    backgroundColor: '#F8F2EC',
+    backgroundColor: '#504F69',
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
@@ -107,7 +107,7 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
-  }
+  },
 });
 
 class Header extends Component {
@@ -153,7 +153,7 @@ class Header extends Component {
         <div className={classes.header}>
           <div className={classes.icon}>
             <img
-              alt=""
+              alt=''
               src={require('../../assets/beefy.svg')}
               height={'40px'}
               onClick={() => {
@@ -171,11 +171,11 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            { this.renderLink('gov', 'gov', 'landmark') }
-            { this.renderLink('vote', 'vote', 'vote-yea') }
-            { this.renderLink('app', 'app', 'hand-holding-usd') }
-            { this.renderLink('dashboard', 'stats', 'chart-bar')}
-            { this.renderLink('docs', 'docs', 'book') }
+            {this.renderLink('gov', 'gov', 'landmark')}
+            {this.renderLink('vote', 'vote', 'vote-yea')}
+            {this.renderLink('app', 'app', 'hand-holding-usd')}
+            {this.renderLink('dashboard', 'stats', 'chart-bar')}
+            {this.renderLink('docs', 'docs', 'book')}
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -211,12 +211,12 @@ class Header extends Component {
     `;
 
     const Icon = styled.i`
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       min-width: 24px;
     `;
 
     return (
-      <Link href={`https://${name}.beefy.finance`} target="_blank" rel="noopener noreferrer">
+      <Link href={`https://${name}.beefy.finance`} target='_blank' rel='noopener noreferrer'>
         <Icon className={`fas fa-${icon}`} />
         <span>{label}</span>
       </Link>
