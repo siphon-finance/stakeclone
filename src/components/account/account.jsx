@@ -73,13 +73,13 @@ const styles = theme => ({
     cursor: 'pointer',
   },
   disclaimer: {
-    padding: '12px',
-    border: '1px solid #F8F2EC',
-    borderRadius: '0',
-    background: '#504F69',
+    padding: '15px 40px',
+    background: 'rgba(80, 79, 105, 0.4)',
+    borderRadius: '5px',
     marginBottom: '2rem',
-    fontWeight: 900,
-    color: '#000',
+    fontWeight: 600,
+    color: 'white',
+    letterSpacing: '-0.02em',
   },
 });
 

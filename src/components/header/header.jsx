@@ -79,6 +79,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
+    color: 'white',
     '&:hover': {
       background: '#fff',
       color: '#000',
@@ -104,6 +105,7 @@ const styles = theme => ({
   },
   name: {
     paddingLeft: '24px',
+    color: 'white',
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },

@@ -58,12 +58,13 @@ const styles = theme => ({
     color: 'white',
   },
   disclaimer: {
-    padding: '12px 30px',
+    padding: '15px 40px',
     background: 'rgba(80, 79, 105, 0.4)',
     borderRadius: '5px',
     marginBottom: '2rem',
     fontWeight: 600,
     color: 'white',
+    letterSpacing: '-0.02em',
   },
   rewardPools: {
     width: '100%',
@@ -79,8 +80,7 @@ const styles = theme => ({
     width: '260px',
     padding: '2rem 3rem',
     marginBottom: '2rem',
-    border: '1px solid #DED9D5',
-    borderRadius: '8px',
+    borderRadius: '5px',
     background: '#504F69',
   },
   title: {
