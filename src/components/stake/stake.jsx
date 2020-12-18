@@ -7,7 +7,6 @@ import Loader from '../loader';
 import Snackbar from '../snackbar';
 
 import Store from '../../stores';
-import { colors } from '../../theme';
 
 import { ERROR, STAKE, STAKE_RETURNED, WITHDRAW, WITHDRAW_RETURNED, GET_REWARDS, GET_REWARDS_RETURNED, EXIT, EXIT_RETURNED, GET_BALANCES_RETURNED } from '../../constants';
 
@@ -67,9 +66,11 @@ const styles = theme => ({
     margin: '0 5px',
   },
   overviewTitle: {
-    color: colors.darkGray,
+    color: '#DEDDFF',
   },
-  overviewValue: {},
+  overviewValue: {
+    color: 'white',
+  },
   actions: {
     width: '100%',
     display: 'flex',
@@ -121,15 +122,16 @@ const styles = theme => ({
   },
   actionInput: {
     padding: '0px 0px 12px 0px',
-
     '& input': {
       fontSize: '1.2rem',
-      borderBottom: '1px solid #DED9D5',
+      borderBottom: '1px solid #DEDDFF',
+      color: 'white',
     },
   },
   inputAdornment: {
     fontWeight: '600',
     fontSize: '1.5rem',
+    color: '#DEDDFF',
   },
   assetIcon: {
     display: 'inline-block',
@@ -146,6 +148,7 @@ const styles = theme => ({
     textAlign: 'right',
     paddingRight: '20px',
     cursor: 'pointer',
+    color: '#DEDDFF',
   },
   stakeButtons: {
     width: '100%',
@@ -165,7 +168,7 @@ const styles = theme => ({
     margin: '20px',
   },
   title: {
-    color: '#000',
+    color: 'white',
     marginBottom: '2rem',
     width: '100%',
     textAlign: 'center',
