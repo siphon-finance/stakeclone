@@ -118,7 +118,7 @@ class Store {
         {
           id: 'narwhal',
           logo: 'nar-logo.png',
-          name: 'THUGS-NAR NLP',
+          name: 'THUGS-NAR',
           brief: 'Narwhalswap',
           link: 'https://narwhalswap.org',
           depositsEnabled: true,
@@ -169,7 +169,7 @@ class Store {
               rewardRate: 0,
             },
           ],
-        }
+        },
       ],
     };
 
