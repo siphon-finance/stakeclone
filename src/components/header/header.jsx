@@ -173,11 +173,9 @@ class Header extends Component {
             </Typography>
           </div>
           <div className={classes.links}>
-            {this.renderLink('gov', 'gov', 'landmark')}
-            {this.renderLink('vote', 'vote', 'vote-yea')}
             {this.renderLink('app', 'app', 'hand-holding-usd')}
             {this.renderLink('dashboard', 'stats', 'chart-bar')}
-            {this.renderLink('docs', 'docs', 'book')}
+            {this.renderLink('buy', 'buy', 'dollar-sign')}
           </div>
           <div className={classes.account}>
             {/* FIXME: check this */}
@@ -218,11 +216,17 @@ class Header extends Component {
     `;
 
     return (
-      <Link href={`https://${name}.beefy.finance`} target='_blank' rel='noopener noreferrer'>
+      <Link href={this.getLinkUrl(name)} target='_blank' rel='noopener noreferrer'>
         <Icon className={`fas fa-${icon}`} />
         <span>{label}</span>
       </Link>
     );
+  };
+
+  getLinkUrl = (name) => {
+    return name === "buy" 
+      ? "https://streetswap.vip/#/swap?inputCurrency=BNB&outputCurrency=0xca3f508b8e4dd382ee878a314789373d80a5190a" 
+      : `https://${name}.beefy.finance`
   };
 
   nav = screen => {
