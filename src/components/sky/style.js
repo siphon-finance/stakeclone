@@ -1,14 +1,49 @@
 import styled from 'styled-components';
 
-export const StarSimple = styled.div`
+export const GoldenCandy = styled.img`
   position: absolute;
-  left: 0;
-  right: 84.21%;
-  top: 65.69%;
-  bottom: 32.1%;
-  background: #779ec2;
-  width: 100px;
-  border-radius: 50%;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
+  top: 20%;
+  left: 10%;
+  width: 35px;
+  height: 35px;
+  z-index: -1;
+`;
+
+export const GoldenBoot = styled.img`
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 35px;
+  height: 35px;
+  z-index: -1;
+`;
+
+export const GoldenCookie = styled.img`
+  position: absolute;
+  top: 70%;
+  left: 35%;
+  width: 35px;
+  height: 35px;
+  z-index: -1;
+`;
+
+export const Santa = styled.img`
+  position: absolute;
+  top: 150px;
+  right: 50px;
+  z-index: -1;
+`;
+
+export const Cow1 = styled.img`
+  position: absolute;
+  top: 150px;
+  right: 70px;
+  z-index: -1;
+`;
+
+export const Cow2 = styled.img`
+  position: absolute;
+  top: 150px;
+  right: 70px;
+  z-index: -1;
 `;
