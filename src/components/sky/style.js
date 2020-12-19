@@ -59,3 +59,39 @@ export const Cow2 = styled.img`
     display: none;
   }
 `;
+
+export const Gift1 = styled.img`
+  position: absolute;
+  top: 250px;
+  right: 100px;
+  width: 40px;
+  transform: rotate(30deg);
+  z-index: -1;
+  @media (max-width: 960px) {
+    display: none;
+  }
+`;
+
+export const Gift2 = styled.img`
+  position: absolute;
+  top: 320px;
+  right: 100px;
+  width: 35px;
+  transform: rotate(50deg);
+  z-index: -1;
+  @media (max-width: 960px) {
+    display: none;
+  }
+`;
+
+export const Gift3 = styled.img`
+  position: absolute;
+  top: 390px;
+  right: 100px;
+  width: 25px;
+  transform: rotate(40deg);
+  z-index: -1;
+  @media (max-width: 960px) {
+    display: none;
+  }
+`;
