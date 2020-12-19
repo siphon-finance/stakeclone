@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight } from './style';
+import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight, Sleepy } from './style';
 import Tree from '../tree';
 
 const Pastures = () => {
   const [trees, setTrees] = useState([]);
 
   useEffect(() => {
-    let n = Math.ceil(Math.random() * 7) + 4;
+    let n = Math.ceil(Math.random() * 4) + 4;
     setTrees(new Array(n).fill(0));
   }, []);
 
@@ -17,6 +17,7 @@ const Pastures = () => {
       <PastureCenterBg />
       <PastureCenterFg />
       {trees && trees.map((_, index) => <Tree total={trees.length} index={index} key={index} />)}
+      <Sleepy src={require('../../assets/sleepy.png')} />
     </PasturesContainer>
   );
 };

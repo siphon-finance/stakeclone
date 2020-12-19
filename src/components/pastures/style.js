@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PasturesContainer = styled.div`
   display: none;
-  
+
   @media only screen and (min-width: 769px) {
     display: block;
   }
@@ -51,9 +51,12 @@ export const PastureRight = styled.div`
   background-color: #5a8f69;
 `;
 
-export const Cows = styled.div`
+export const Sleepy = styled.img`
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 50px;
+  right: 120px;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
 `;
