@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight } from './style';
-import Cow from '../cow';
+import Tree from '../tree';
 
 const Pastures = () => {
-  const [cows, setCows] = useState([]);
+  const [trees, setTrees] = useState([]);
 
   useEffect(() => {
-    let n = Math.ceil(Math.random() * 3) + 3;
-    setCows(new Array(n).fill(0));
+    let n = Math.ceil(Math.random() * 7) + 4;
+    setTrees(new Array(n).fill(0));
   }, []);
 
   return (
@@ -16,7 +16,7 @@ const Pastures = () => {
       <PastureRight />
       <PastureCenterBg />
       <PastureCenterFg />
-      {cows && cows.map((_, index) => <Cow total={cows.length} index={index} key={index} />)}
+      {trees && trees.map((_, index) => <Tree total={trees.length} index={index} key={index} />)}
     </PasturesContainer>
   );
 };

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const Cow = ({ total, index }) => {
+const Tree = ({ total, index }) => {
   const [dimensions, setDimensions] = useState(null);
 
   useEffect(() => {
     const r = 100 / total;
     const x = (index + Math.random() * 0.5) * r;
     const y = Math.ceil(Math.random() * 30) / 10 + 0.5;
-    const w = Math.round(Math.random() * 5) + 2.25;
+    const w = Math.round(Math.random() * 3) + 2;
     const d = Math.random() < 0.5 ? -1 : 1;
 
     setDimensions({ x, y, w, d });
@@ -17,8 +17,8 @@ const Cow = ({ total, index }) => {
 
   return (
     <img
-      alt='cow'
-      src={require('../../assets/beefy.svg')}
+      alt='tree'
+      src={require('../../assets/tree.svg')}
       style={{
         position: 'absolute',
         bottom: `${dimensions.y}rem`,
@@ -31,4 +31,4 @@ const Cow = ({ total, index }) => {
   );
 };
 
-export default Cow;
+export default Tree;
