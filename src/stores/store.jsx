@@ -65,7 +65,7 @@ class Store {
           name: 'TWT-BNB',
           brief: 'Trust Wallet',
           link: 'https://trustwallet.com/',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'cake-twt-bnb',
@@ -93,7 +93,7 @@ class Store {
           name: 'DRUGS v2',
           brief: 'Thugs finance',
           link: 'https://thugs.fi/',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'thugs-drugs-guns',
@@ -121,7 +121,7 @@ class Store {
           name: 'THUGS-NAR',
           brief: 'Narwhalswap',
           link: 'https://narwhalswap.org',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'narwhal-thugs-nar',
@@ -149,7 +149,7 @@ class Store {
           name: 'BIFI Maxi',
           brief: 'Beefy Finance',
           link: 'https://beefy.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'bifi-maxi',
