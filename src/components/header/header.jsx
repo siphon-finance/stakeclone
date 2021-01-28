@@ -223,10 +223,8 @@ class Header extends Component {
     );
   };
 
-  getLinkUrl = (name) => {
-    return name === "buy" 
-      ? "https://streetswap.vip/#/swap?inputCurrency=BNB&outputCurrency=0xca3f508b8e4dd382ee878a314789373d80a5190a" 
-      : `https://${name}.beefy.finance`
+  getLinkUrl = name => {
+    return name === 'buy' ? 'https://streetswap.vip/#/swap?inputCurrency=BNB&outputCurrency=0xca3f508b8e4dd382ee878a314789373d80a5190a' : `https://${name}.beefy.finance`;
   };
 
   nav = screen => {
