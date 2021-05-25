@@ -224,7 +224,7 @@ class Header extends Component {
   };
 
   getLinkUrl = name => {
-    return name === 'buy' ? 'https://streetswap.vip/#/swap?inputCurrency=BNB&outputCurrency=0xca3f508b8e4dd382ee878a314789373d80a5190a' : `https://${name}.beefy.finance`;
+    return name === 'buy' ? 'https://swap.hyperjump.fi/#/swap?outputCurrency=0x4aF3393cE6E1eCd29Aac16937624d85887852Fcc' : `https://${name}.siphon.finance`;
   };
 
   nav = screen => {
