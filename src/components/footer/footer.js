@@ -13,19 +13,19 @@ const Footer = () => {
   return (
     <Container>
       <Column>
-        <Title>beefy.finance</Title>
+        <Title>siphon.finance</Title>
 
-        <Link href="https://docs.beefy.finance" target="_blank">
+        <Link href="https://docs.siphon.finance" target="_blank">
           <FAIcon type='book' />
           <LinkLabel>docs</LinkLabel>
         </Link>
 
-        <Link href="https://medium.com/beefyfinance" target="_blank">
+        <Link href="https://medium.com/siphonfinance" target="_blank">
           <BrandIcon type='medium' />
           <LinkLabel>news</LinkLabel>
         </Link>
 
-        <Link href="https://github.com/beefyfinance" target="_blank">
+        <Link href="https://github.com/siphonfinance" target="_blank">
           <BrandIcon type='github' />
           <LinkLabel>source</LinkLabel>
         </Link>
@@ -33,17 +33,17 @@ const Footer = () => {
 
       <Column>
         <Title>products</Title>
-        <Link href="https://gov.beefy.finance" target="_blank">
+        <Link href="https://siphon.finance" target="_blank">
           <FAIcon type='landmark' />
-          <LinkLabel>gov</LinkLabel>
+          <LinkLabel>home</LinkLabel>
         </Link>
 
-        <Link href="https://vote.beefy.finance" target="_blank">
+        <Link href="https://gov.siphon.finance" target="_blank">
           <FAIcon type='vote-yea' />
           <LinkLabel>vote</LinkLabel>
         </Link>
 
-        <Link href="https://app.beefy.finance" target="_blank">
+        <Link href="https://app.siphon.finance" target="_blank">
           <FAIcon type='hand-holding-usd' />
           <LinkLabel>app</LinkLabel>
         </Link>
@@ -51,15 +51,15 @@ const Footer = () => {
 
       <Column>
         <Title>socials</Title>
-        <Link href="https://twitter.com/beefyfinance" target="_blank">
+        <Link href="https://twitter.com/siphonfinance" target="_blank">
           <BrandIcon type='twitter' />
           <LinkLabel>twitter</LinkLabel>
         </Link>
-        <Link href="https://t.me/beefyfinance" target="_blank">
+        <Link href="https://t.me/siphonfinance" target="_blank">
           <BrandIcon type='telegram' />
           <LinkLabel>telegram</LinkLabel>
         </Link>
-        <Link href="https://discord.gg/9xfMvJY" target="_blank">
+        <Link href="https://discord.gg/" target="_blank">
           <BrandIcon type='discord' />
           <LinkLabel>discord</LinkLabel>
         </Link>
