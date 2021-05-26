@@ -70,7 +70,7 @@ class Store {
             {
               id: 'sphn-sphn',
               logo: 'logo.png',
-              address: '0x3b2c93f9455786e74C68648EaaB09B20ce557537',
+              address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0xaEADEb700BFB083da7F02540EF29485498Dc81dF',
@@ -98,7 +98,7 @@ class Store {
             {
               id: 'sphn-btcb',
               logo: 'BTCB.svg',
-              address: '0x8AE31751A226B0C5357a377E53B6DB12bDF5e64d',
+              address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0x895817e9298c3a8b6EaE2c5e4507B314b0063530',
@@ -126,7 +126,7 @@ class Store {
             {
               id: 'sphn-bnb',
               logo: 'bnb.png',
-              address: '0xCa6e313C535B6C355bEeAae296B58a194C3D6044',
+              address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0x66245518ac3410B55B6d5667F9A937Db207A4618',
@@ -154,7 +154,7 @@ class Store {
             {
               id: 'sphn-clock',
               logo: 'logo.png',
-              address: '0xf7069e41C57EcC5F122093811d8c75bdB5f7c14e',
+              address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0xA1448795fc2489EadAF5e90d8c7d4cbdc8EF5D19',
