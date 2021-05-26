@@ -61,15 +61,15 @@ class Store {
       rewardPools: [
         {
           id: 'sphn',
-          logo: 'trust-logo.png',
+          logo: 'logo.png',
           name: 'SPHN',
           brief: 'earns SPHN',
           link: 'https://siphon.finance/',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'btcb',
-              logo: 'twt-bnb.svg',
+              id: 'sphn-sphn',
+              logo: 'logo.png',
               address: '0x3b2c93f9455786e74C68648EaaB09B20ce557537',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -88,16 +88,16 @@ class Store {
         },
 
         {
-          id: 'thugs',
-          logo: 'thugs-logo.png',
+          id: 'btcb',
+          logo: 'logo.png',
           name: 'SPHN',
           brief: 'earns BTCB',
           link: 'https://bitcoin.com',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'thugs-drugs-guns',
-              logo: 'drugs-v2.png',
+              id: 'sphn-btcb',
+              logo: 'logo.png',
               address: '0x8AE31751A226B0C5357a377E53B6DB12bDF5e64d',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -117,15 +117,15 @@ class Store {
 
         {
           id: 'BNB',
-          logo: 'nar-logo.png',
+          logo: 'logo.png',
           name: 'SPHN',
           brief: 'earns BNB',
           link: 'https://binance.org',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'narwhal-thugs-nar',
-              logo: 'thugs-nar.png',
+              id: 'sphn-bnb',
+              logo: 'logo.png',
               address: '0xCa6e313C535B6C355bEeAae296B58a194C3D6044',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -145,15 +145,15 @@ class Store {
 
         {
           id: 'clock',
-          logo: 'bifi-logo.png',
+          logo: 'logo.png',
           name: 'SPHN',
           brief: 'earns clock',
           link: 'https://clockwork.money',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'bifi-maxi',
-              logo: 'bifi-logo.png',
+              id: 'sphn-clock',
+              logo: 'logo.png',
               address: '0xf7069e41C57EcC5F122093811d8c75bdB5f7c14e',
               symbol: 'SPHN',
               abi: config.erc20ABI,
