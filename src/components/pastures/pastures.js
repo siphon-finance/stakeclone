@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
 //import { PasturesContainer, PastureLeft, PastureCenterBg, PastureCenterFg, PastureRight, Sleepy } from './style';
 //import Tree from '../tree';
 
@@ -22,4 +22,4 @@ import React, { useEffect, useState } from 'react';
 //  );
 //};
 
-export default Pastures;
+//export default Pastures;
