@@ -27,15 +27,15 @@ export const GoldenCookie = styled.img`
   z-index: -1;
 `;
 
-export const Santa = styled.img`
-  position: absolute;
-  top: 120px;
-  right: 50px;
-  z-index: -1;
-  @media (max-width: 960px) {
-    display: none;
-  }
-`;
+//export const Santa = styled.img`
+//  position: absolute;
+//  top: 120px;
+//  right: 50px;
+//  z-index: -1;
+//  @media (max-width: 960px) {
+//    display: none;
+//  }
+//`;
 
 export const Cow1 = styled.img`
   position: absolute;
