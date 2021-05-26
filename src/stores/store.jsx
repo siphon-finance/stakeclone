@@ -89,7 +89,7 @@ class Store {
 
         {
           id: 'btcb',
-          logo: 'btcb.svg',
+          logo: 'BTCB.svg',
           name: 'SPHN',
           brief: 'earns BTCB',
           link: 'https://bitcoin.com',
@@ -97,7 +97,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-btcb',
-              logo: 'btcb.svg',
+              logo: 'BTCB.svg',
               address: '0x8AE31751A226B0C5357a377E53B6DB12bDF5e64d',
               symbol: 'SPHN',
               abi: config.erc20ABI,
