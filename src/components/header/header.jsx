@@ -156,7 +156,7 @@ class Header extends Component {
           <div className={classes.icon}>
             <img
               alt=''
-              src={require('../../assets/beefy.svg')}
+              src={require('../../assets/ban.png')}
               height={'40px'}
               onClick={() => {
                 this.nav('');
@@ -169,7 +169,7 @@ class Header extends Component {
                 this.nav('');
               }}
             >
-              beefy.finance
+              siphon.finance
             </Typography>
           </div>
           <div className={classes.links}>
