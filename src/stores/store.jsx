@@ -60,15 +60,15 @@ class Store {
 
       rewardPools: [
         {
-          id: 'trust',
+          id: 'sphn',
           logo: 'trust-logo.png',
           name: 'SPHN',
           brief: 'earns SPHN',
           link: 'https://siphon.finance/',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
-              id: 'cake-twt-bnb',
+              id: 'btcb',
               logo: 'twt-bnb.svg',
               address: '0x3b2c93f9455786e74C68648EaaB09B20ce557537',
               symbol: 'SPHN',
@@ -93,7 +93,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns BTCB',
           link: 'https://bitcoin.com',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'thugs-drugs-guns',
@@ -121,7 +121,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns BNB',
           link: 'https://binance.org',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'narwhal-thugs-nar',
@@ -149,7 +149,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns clock',
           link: 'https://clockwork.money',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'bifi-maxi',
