@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Star from '../star';
-import { GoldenCookie, GoldenBoot, GoldenCandy, Cow1, Cow2, Gift1, Gift2, Gift3 } from './style';
+//import { GoldenCookie, GoldenBoot, GoldenCandy, Cow1, Cow2, Gift1, Gift2, Gift3 } from './style';
 
 const Sky = () => {
   const [stars, setStars] = useState([]);
@@ -13,14 +13,7 @@ const Sky = () => {
 
   return (
     <>
-//      <GoldenCandy src={require('../../assets/candy.svg')} />
-//      <GoldenBoot src={require('../../assets/boot.svg')} />
-//      <GoldenCookie src={require('../../assets/cookie.svg')} />
-//      <Cow1 src={require('../../assets/cow.svg')} />
-//      <Cow2 src={require('../../assets/cow.svg')} />
-//      <Gift1 src={require('../../assets/gift.svg')} />
-//      <Gift2 src={require('../../assets/gift.svg')} />
-//      <Gift3 src={require('../../assets/gift.svg')} />
+
 
       {stars && stars.map((_, index) => <Star key={index} />)}
     </>
