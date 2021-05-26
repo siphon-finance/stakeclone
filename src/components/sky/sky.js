@@ -16,7 +16,6 @@ const Sky = () => {
 //      <GoldenCandy src={require('../../assets/candy.svg')} />
 //      <GoldenBoot src={require('../../assets/boot.svg')} />
 //      <GoldenCookie src={require('../../assets/cookie.svg')} />
-//      <Santa src={require('../../assets/santa.svg')} />
 //      <Cow1 src={require('../../assets/cow.svg')} />
 //      <Cow2 src={require('../../assets/cow.svg')} />
 //      <Gift1 src={require('../../assets/gift.svg')} />
