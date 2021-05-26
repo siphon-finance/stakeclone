@@ -145,7 +145,7 @@ class Account extends Component {
     return (
       <div className={classes.notConnectedRoot}>
         <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Use with caution and DYOR.
+          This project is in Beta. Audit still in progress, please DYOR.
         </Typography>
         <div className={classes.connectHeading}>
           <Typography variant='h3'>Connect your wallet to continue</Typography>
