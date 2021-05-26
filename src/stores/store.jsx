@@ -89,7 +89,7 @@ class Store {
 
         {
           id: 'btcb',
-          logo: 'logo.png',
+          logo: 'btcb.svg',
           name: 'SPHN',
           brief: 'earns BTCB',
           link: 'https://bitcoin.com',
@@ -97,7 +97,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-btcb',
-              logo: 'logo.png',
+              logo: 'btcb.svg',
               address: '0x8AE31751A226B0C5357a377E53B6DB12bDF5e64d',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -117,7 +117,7 @@ class Store {
 
         {
           id: 'BNB',
-          logo: 'logo.png',
+          logo: 'bnb.png',
           name: 'SPHN',
           brief: 'earns BNB',
           link: 'https://binance.org',
@@ -125,7 +125,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-bnb',
-              logo: 'logo.png',
+              logo: 'bnb.png',
               address: '0xCa6e313C535B6C355bEeAae296B58a194C3D6044',
               symbol: 'SPHN',
               abi: config.erc20ABI,
