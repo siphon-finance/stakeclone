@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Star from '../star';
-import { GoldenCookie, GoldenBoot, GoldenCandy, Santa, Cow1, Cow2, Gift1, Gift2, Gift3 } from './style';
+import { GoldenCookie, GoldenBoot, GoldenCandy, Cow1, Cow2, Gift1, Gift2, Gift3 } from './style';
 
 const Sky = () => {
   const [stars, setStars] = useState([]);
