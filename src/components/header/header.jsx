@@ -169,11 +169,11 @@ class Header extends Component {
                 this.nav('');
               }}
             >
-              siphon.finance
+              siphon staking
             </Typography>
           </div>
           <div className={classes.links}>
-            {this.renderLink('app', 'app', 'hand-holding-usd')}
+            {this.renderLink('gov', 'vote', 'vote-yea')}
             {this.renderLink('dashboard', 'stats', 'chart-bar')}
             {this.renderLink('buy', 'buy', 'dollar-sign')}
           </div>
