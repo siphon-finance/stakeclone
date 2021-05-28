@@ -116,23 +116,23 @@ class Store {
         },
 
         {
-          id: 'BNB',
-          logo: 'bnb.png',
+          id: 'BUSD',
+          logo: 'busd.svg',
           name: 'SPHN',
           brief: 'earns BNB',
           link: 'https://binance.org',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'sphn-bnb',
-              logo: 'bnb.png',
+              id: 'sphn-busd',
+              logo: 'busd.svg',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0x66245518ac3410B55B6d5667F9A937Db207A4618',
               rewardsAddress: '0x7c23F877AD6734AE0a8aE6861483ec8f498e6eBB',
               rewardsABI: config.govPoolABI,
-              rewardsSymbol: 'BNB',
+              rewardsSymbol: 'BUSD',
               decimals: 18,
               balance: 0,
               stakedBalance: 0,
