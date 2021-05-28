@@ -12,7 +12,7 @@ const Layout = ({ children }) => (
     {children}
     <Footer />
     <Sky />
-    {/* <Pastures /> */}
+
   </Container>
 );
 
