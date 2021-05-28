@@ -89,7 +89,7 @@ class Store {
 
         {
           id: 'fts',
-          logo: 'fts.svg',
+          logo: 'busd.svg',
           name: 'SPHN',
           brief: 'earns FTS',
           link: 'https://fortress.loans',
@@ -97,7 +97,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-fts',
-              logo: 'fts.svg',
+              logo: 'busd.svg',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
