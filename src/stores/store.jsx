@@ -147,7 +147,7 @@ class Store {
           id: 'clock',
           logo: 'logo.png',
           name: 'SPHN',
-          brief: 'earns clock',
+          brief: 'earns CLOCK',
           link: 'https://clockwork.money',
           depositsEnabled: true,
           tokens: [

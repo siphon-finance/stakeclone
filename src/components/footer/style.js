@@ -8,7 +8,7 @@ const Container = styled.section`
   max-width: 40rem;
   margin: 2rem auto;
   @media only screen and (min-width: 769px) {
-    margin: 2rem auto 8rem;
+    margin: 4rem auto 2rem;
   }
 `;
 
@@ -19,8 +19,9 @@ const Column = styled.div`
 
 const Title = styled.div`
   font-weight: 900;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   margin-bottom: 0.5rem;
+  color: #e8e162;
 `;
 
 const Link = styled.a`

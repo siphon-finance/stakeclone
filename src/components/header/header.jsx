@@ -91,7 +91,8 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       position: 'absolute',
-      top: '5rem',
+      top: '6rem',
+      right: '.5rem',
     },
   },
   connectedDot: {
@@ -105,7 +106,7 @@ const styles = theme => ({
   },
   name: {
     paddingLeft: '24px',
-    color: 'white',
+    color: '#e8e162',
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
@@ -157,7 +158,7 @@ class Header extends Component {
             <img
               alt=''
               src={require('../../assets/ban.png')}
-              height={'40px'}
+              height={'90px'}
               onClick={() => {
                 this.nav('');
               }}
@@ -169,7 +170,7 @@ class Header extends Component {
                 this.nav('');
               }}
             >
-              siphon staking
+              Siphon Staking
             </Typography>
           </div>
           <div className={classes.links}>
