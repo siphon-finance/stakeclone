@@ -61,7 +61,7 @@ class Store {
       rewardPools: [
         {
           id: 'sphn',
-          logo: 'logo.png',
+          logo: 'sfnobg.png',
           name: 'SPHN',
           brief: 'earns SPHN',
           link: 'https://siphon.finance/',
@@ -69,7 +69,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-sphn',
-              logo: 'logo.png',
+              logo: 'sfnobg.png',
               address: '0x7d3cfe36776f39e6b7036e8e32d1a31fbfa579fa',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -145,7 +145,7 @@ class Store {
 
         {
           id: 'clock',
-          logo: 'logo.png',
+          logo: 'sfnobg.png',
           name: 'SPHN',
           brief: 'earns CLOCK',
           link: 'https://clockwork.money',
