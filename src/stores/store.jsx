@@ -60,7 +60,7 @@ class Store {
 
       rewardPools: [
         {
-          id: 'sphn',
+          id: 'srt',
           logo: 'sfnobg.png',
           name: 'SRT',
           brief: 'earns SRT',
@@ -68,7 +68,7 @@ class Store {
           depositsEnabled: true,
           tokens: [
             {
-              id: 'sphn-sphn',
+              id: 'srt-srt',
               logo: 'sfnobg.png',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SRT',
