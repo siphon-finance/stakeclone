@@ -65,12 +65,12 @@ class Store {
           name: 'SRT',
           brief: 'earns SRT',
           link: 'https://siphon.finance/',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'sphn-sphn',
               logo: 'sfnobg.png',
-              address: '0x492BE6f15fe6bDe4cC9cF71c5d686575FC476637',
+              address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SRT',
               abi: config.erc20ABI,
               rewardsToken: '0x492BE6f15fe6bDe4cC9cF71c5d686575FC476637',
