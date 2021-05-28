@@ -89,7 +89,7 @@ class Store {
 
         {
           id: 'fts',
-          logo: 'busd.svg',
+          logo: 'fts.svg',
           name: 'SPHN',
           brief: 'earns FTS',
           link: 'https://fortress.loans',
@@ -97,7 +97,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-fts',
-              logo: 'busd.svg',
+              logo: 'fts.svg',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
@@ -117,7 +117,7 @@ class Store {
 
         {
           id: 'BUSD',
-          logo: 'busd.svg',
+          logo: 'BUSD.svg',
           name: 'SPHN',
           brief: 'earns BUSD',
           link: 'https://binance.org',
@@ -125,7 +125,7 @@ class Store {
           tokens: [
             {
               id: 'sphn-busd',
-              logo: 'busd.svg',
+              logo: 'BUSD.svg',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SPHN',
               abi: config.erc20ABI,
