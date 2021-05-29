@@ -20,7 +20,7 @@ const Footer = () => {
           <LinkLabel>docs</LinkLabel>
         </Link>
 
-        <Link href="https://medium.com/siphon-finance" target="_blank">
+        <Link href="https://siphon-finance.medium.com" target="_blank">
           <BrandIcon type='medium' />
           <LinkLabel>news</LinkLabel>
         </Link>
