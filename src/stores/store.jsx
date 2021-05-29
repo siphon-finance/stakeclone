@@ -73,7 +73,7 @@ class Store {
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               symbol: 'SRT',
               abi: config.erc20ABI,
-              rewardsToken: '0x492BE6f15fe6bDe4cC9cF71c5d686575FC476637',
+              rewardsToken: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               rewardsAddress: '0xc436B3159b011dF519E19cbDF366a3Beef1e29F7',
               rewardsABI: config.govPoolABI,
               rewardsSymbol: 'SRT',
