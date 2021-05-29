@@ -65,7 +65,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns SPHN',
           link: 'https://siphon.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-sphn',
