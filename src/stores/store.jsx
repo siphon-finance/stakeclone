@@ -60,23 +60,23 @@ class Store {
 
       rewardPools: [
         {
-          id: 'srt',
+          id: 'sphn',
           logo: 'sfnobg.png',
-          name: 'SRT',
-          brief: 'earns SRT',
+          name: 'SPHN',
+          brief: 'earns SPHN',
           link: 'https://siphon.finance',
           depositsEnabled: true,
           tokens: [
             {
-              id: 'srt-srt',
-              logo: 'fts.svg',
+              id: 'sphn-sphn',
+              logo: 'sfnobg.png',
               address: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
-              symbol: 'SRT',
+              symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0x492be6f15fe6bde4cc9cf71c5d686575fc476637',
               rewardsAddress: '0x65Bb041bf0159bdff3243eC427F383744C8ab045',
               rewardsABI: config.govPoolABI,
-              rewardsSymbol: 'SRT',
+              rewardsSymbol: 'SPHN',
               decimals: 18,
               balance: 0,
               stakedBalance: 0,
