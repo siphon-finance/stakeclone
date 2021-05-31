@@ -65,7 +65,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns SPHN',
           link: 'https://siphon.finance',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'sphn-sphn',
@@ -93,7 +93,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns FTS',
           link: 'https://fortress.loans',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'sphn-fts',
@@ -121,7 +121,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns BUSD',
           link: 'https://binance.org',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'sphn-busd',
