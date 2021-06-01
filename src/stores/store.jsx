@@ -185,7 +185,7 @@ class Store {
               symbol: 'SPHN',
               abi: config.erc20ABI,
               rewardsToken: '0xae13d989dac2f0debff460ac112a837c89baa7cd',
-              rewardsAddress: '0x304B08cD02082A1fA552996BC82643293AE09878',
+              rewardsAddress: '0x3Ad053589021804B206b468028cADC9028f2EC2E',
               rewardsABI: config.govPoolABI,
               rewardsSymbol: 'WBNB',
               decimals: 18,
