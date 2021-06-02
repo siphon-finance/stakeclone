@@ -15,10 +15,10 @@ const Footer = () => {
       <Column>
         <Title>siphon.finance</Title>
 
-        <Link href="https://docs.siphon.finance" target="_blank">
+        {/* <Link href="https://docs.siphon.finance" target="_blank">
           <FAIcon type='book' />
           <LinkLabel>docs</LinkLabel>
-        </Link>
+        </Link> */}
 
         <Link href="https://siphon-finance.medium.com" target="_blank">
           <BrandIcon type='medium' />
@@ -43,9 +43,9 @@ const Footer = () => {
           <LinkLabel>vote</LinkLabel>
         </Link>
 
-        <Link href="https://app.siphon.finance" target="_blank">
-          <FAIcon type='hand-holding-usd' />
-          <LinkLabel>app</LinkLabel>
+        <Link href="https://poocoin.app/tokens/0xb58a579e8f987b52564a5fe08fe5181dc2621a9c" target="_blank">
+          <FAIcon type='chart-bar' />
+          <LinkLabel>stats</LinkLabel>
         </Link>
       </Column>
 
@@ -59,10 +59,10 @@ const Footer = () => {
           <BrandIcon type='telegram' />
           <LinkLabel>telegram</LinkLabel>
         </Link>
-        <Link href="https://discord.gg/" target="_blank">
+        {/* <Link href="https://discord.gg/" target="_blank">
           <BrandIcon type='discord' />
           <LinkLabel>discord</LinkLabel>
-        </Link>
+        </Link> */}
       </Column>
     </Container>
   );

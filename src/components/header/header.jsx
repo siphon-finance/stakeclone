@@ -225,7 +225,7 @@ class Header extends Component {
   };
 
   getLinkUrl = name => {
-    return name === 'buy' ? 'https://swap.hyperjump.fi/#/swap?outputCurrency=0xb58a579e8f987b52564a5fe08fe5181dc2621a9c' : `https://${name}.siphon.finance`;
+    return name === 'buy' ? 'https://swap.hyperjump.fi/#/swap?outputCurrency=0xb58a579e8f987b52564a5fe08fe5181dc2621a9c' : name === 'dashboard' ? 'https://poocoin.app/tokens/0xb58a579e8f987b52564a5fe08fe5181dc2621a9c' : `https://${name}.siphon.finance`;
   };
 
   nav = screen => {
