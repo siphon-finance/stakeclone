@@ -117,12 +117,39 @@ class Store {
         },
 
         {
-          id: 'clock',
+          id: 'farm',
           logo: 'sfnobg.png',
-          name: 'SPHN',
+          name: 'SPHN/BNB hyperLP',
           brief: 'earns SPHN',
           link: 'https://siphon.finance',
           depositsEnabled: true,
+          tokens: [
+            {
+              id: 'sphn-farm',
+              logo: 'sfnobg.png',
+              address: '0x402E6B9F9A2959d6f4eb398071d90270a6583C73',
+              symbol: 'SPHN-BNB hyperLP',
+              abi: config.erc20ABI,
+              rewardsToken: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
+              rewardsAddress: '0x75fE58852C96b3A47A7Aec22F15612F345b3cA85',
+              rewardsABI: config.govPoolABI,
+              rewardsSymbol: 'SPHN',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+              rewardRate: 0,
+            },
+          ],
+        },
+                {
+          id: 'clock',
+          logo: 'sfnobg.png',
+          name: 'ENDED',
+          brief: 'earns SPHN',
+          link: 'https://siphon.finance',
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-clock',
