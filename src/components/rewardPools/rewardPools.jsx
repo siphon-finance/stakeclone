@@ -82,6 +82,9 @@ const styles = theme => ({
     marginBottom: '2rem',
     borderRadius: '5px',
     background: '#504F69',
+        [theme.breakpoints.down('md')]: {
+      width: '270px',
+    },
   },
   title: {
     width: '100%',
