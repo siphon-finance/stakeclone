@@ -58,6 +58,9 @@ const iswapTheme = {
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
       lineHeight: 1.2,
+
+      textAlign: 'center',   // J added
+
     },
     h4: {
       fontSize: '16px',

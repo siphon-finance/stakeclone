@@ -43,7 +43,7 @@ const Footer = () => {
           <LinkLabel>vote</LinkLabel>
         </Link>
 
-        <Link href="https://poocoin.app/tokens/0xb58a579e8f987b52564a5fe08fe5181dc2621a9c" target="_blank">
+        <Link href="https://charts.bogged.finance/?token=0xb58a579e8f987b52564A5fE08Fe5181dc2621a9c" target="_blank">
           <FAIcon type='chart-bar' />
           <LinkLabel>stats</LinkLabel>
         </Link>
