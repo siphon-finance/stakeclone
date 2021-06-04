@@ -115,6 +115,16 @@ const styles = theme => ({
     textDecoration: 'none',
     '&:hover': { textDecoration: 'underline' },
   },
+  showPrice: {
+    color: "white"
+  },
+  priceBox: {
+    background: '#505069',
+    borderRadius: '.5rem',
+    width: '125px',
+    textAlign: 'center',
+    marginBottom: '25px'
+  },
   actionButton: {
     color: '#fff',
     borderColor: '#000',
@@ -142,6 +152,10 @@ class RewardPools extends Component {
       rewardPools: rewardPools,
       loading: !(account && rewardPools),
       account: account,
+
+      // ***************** Jay
+      sphnPrice: {}
+
     };
 
     dispatcher.dispatch({ type: GET_BALANCES, content: {} });
@@ -166,15 +180,26 @@ class RewardPools extends Component {
     this.setState({ loading: false });
   };
 
+
+
   render() {
     const { classes } = this.props;
     const { modalOpen } = this.state;
+
+    const priceAPI = 'https://api.dex.guru/v1/tokens/0xb58a579e8f987b52564a5fe08fe5181dc2621a9c-bsc';
+
+    fetch(priceAPI)
+      .then((res) => res.json())
+      .then((data) => this.setState({sphnPrice: data}))
 
     return (
       <div className={classes.root}>
         <Typography variant={'h5'} className={classes.disclaimer}>
           This project is in Beta. Audit still in progress DYOR.
         </Typography>
+        <div className={classes.priceBox}>
+          <h4 className={classes.showPrice}>SPHN: ${(parseInt (this.state.sphnPrice.priceUSD * 100) / 100).toFixed(3) }</h4>
+        </div>
         <div className={classes.rewardPools}>{this.renderRewards()}</div>
         {modalOpen && this.renderModal()}
       </div>
