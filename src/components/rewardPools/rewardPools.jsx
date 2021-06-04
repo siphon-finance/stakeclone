@@ -7,6 +7,8 @@ import UnlockModal from '../unlock/unlockModal.jsx';
 import Store from '../../stores';
 import { colors } from '../../theme';
 
+import { Helmet } from 'react-helmet';
+
 import { CONFIGURE_RETURNED, GET_BALANCES, GET_BALANCES_RETURNED } from '../../constants';
 
 const styles = theme => ({
@@ -187,6 +189,7 @@ class RewardPools extends Component {
     const { modalOpen } = this.state;
 
     const priceAPI = 'https://api.dex.guru/v1/tokens/0xb58a579e8f987b52564a5fe08fe5181dc2621a9c-bsc';
+    // const priceAPI = 'https://bsctools.xyz/hyperjump/api/price.php'
 
     fetch(priceAPI)
       .then((res) => res.json())
@@ -194,11 +197,16 @@ class RewardPools extends Component {
 
     return (
       <div className={classes.root}>
+
+          <Helmet>
+            <title>SPHN ${(parseInt (this.state.sphnPrice.priceUSD * 100) / 100).toFixed(2)}</title>
+          </Helmet>
+
         <Typography variant={'h5'} className={classes.disclaimer}>
           This project is in Beta. Audit still in progress DYOR.
         </Typography>
         <div className={classes.priceBox}>
-          <h4 className={classes.showPrice}>SPHN: ${(parseInt (this.state.sphnPrice.priceUSD * 100) / 100).toFixed(3) }</h4>
+          <h4 className={classes.showPrice}>SPHN: ${(parseInt (this.state.sphnPrice.priceUSD * 100) / 100).toFixed(2) }</h4>
         </div>
         <div className={classes.rewardPools}>{this.renderRewards()}</div>
         {modalOpen && this.renderModal()}
