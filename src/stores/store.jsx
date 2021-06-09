@@ -8,6 +8,10 @@ import {
   GET_BALANCES_RETURNED,
   GET_BALANCES_PERPETUAL,
   GET_BALANCES_PERPETUAL_RETURNED,
+  JOIN_POOL,
+  REMOVE_POOL,
+  NFT_POOL,
+  NFT_POOL_RECEIVED,
   STAKE,
   STAKE_RETURNED,
   WITHDRAW,
@@ -57,6 +61,23 @@ class Store {
         },
       ],
       proposals: [],
+
+      nftPools: {
+        id: 'sphn',
+        logo: 'sfnobg.png',
+        name: 'SPHN',
+        brief: 'earns SPHN',
+        link: 'https://siphon.finance',
+        nftAddress: '0xf375dA1429658c2Fe04BD6b1ea6B2f7158781a30',
+        sphnNifty: '0x180edb4e907442fbe188af3369e430d9b8d6556c',
+        depositsEnabled: true,
+        pools: [88, 888],
+        poolInfo: [],
+        poolLength: 2,
+        investCap: 0,
+        maxInvestorNumber: 0,
+        maxPoolCapacity: 0,
+      },
 
       rewardPools: [
 
@@ -299,6 +320,15 @@ class Store {
           case STAKE:
             this.stake(payload);
             break;
+          case NFT_POOL:
+            this.nftPool(payload);
+            break;
+          case JOIN_POOL:
+            this.joinPool(payload);
+            break;
+          case REMOVE_POOL:
+            this.removePool(payload);
+            break;
           case WITHDRAW:
             this.withdraw(payload);
             break;
@@ -337,6 +367,95 @@ class Store {
     }, 100);
   };
 
+  nftPool = async (payload) => {
+    const account = store.getStore('account');
+    const nftPools = store.getStore('nftPools');
+    const { asset } = payload.content;
+    const web3 = new Web3(store.getStore('web3context').library.provider);
+    const nftContract = new web3.eth.Contract(asset, nftPools.nftAddress);
+
+    let poolInfo = [];
+
+    for (let i = 0; i < nftPools.poolLength; i++) {
+      try {
+        const tmp = await nftContract.methods
+          .sphnPools(nftPools.pools[i])
+          .call({ from: account.address });
+        poolInfo.push(tmp);
+      } catch (err) {}
+    }
+
+    const _investCap = await nftContract.methods._investCap().call();
+    const _maxPoolCapacity = await nftContract.methods
+      ._maxPoolCapacity()
+      .call();
+    const _maxInvestorNumber = await nftContract.methods
+      ._maxInvestorNumber()
+      .call();
+
+    store.setStore({
+      nftPools: {
+        ...nftPools,
+        poolInfo: [...poolInfo],
+        investCap: web3.utils.fromWei(_investCap),
+        maxPoolCapacity: _maxPoolCapacity,
+        maxInvestorNumber: _maxInvestorNumber,
+      },
+    });
+    window.setTimeout(() => {
+      emitter.emit(NFT_POOL_RECEIVED);
+    }, 100);
+  };
+
+  joinPool = async (payload) => {
+    const account = store.getStore('account');
+    const nftPools = store.getStore('nftPools');
+    const { asset, sphnAsset, poolID } = payload.content;
+    const web3 = new Web3(store.getStore('web3context').library.provider);
+    const nftContract = new web3.eth.Contract(asset, nftPools.nftAddress);
+    const sphnNiftyContract = new web3.eth.Contract(
+      sphnAsset,
+      nftPools.sphnNifty
+    );
+
+    console.log(payload.content);
+    await nftContract.methods
+      .joinNftPool(
+        poolID,
+        'https://gateway.pinata.cloud/ipfs/QmT5cv8bACuAsJtDrffe5ZwSTexqJtNjUjCCW5DpRrWxyQ'
+      )
+      .send({ from: account.address, value: 0 });
+
+    const isApproved = await sphnNiftyContract.methods
+      .isApprovedForAll(account.address, nftPools.nftAddress)
+      .call();
+
+    if (!isApproved) {
+      await sphnNiftyContract.methods
+        .setApprovalForAll(nftPools.nftAddress)
+        .send({ from: account.address });
+    }
+  };
+
+  removePool = async (payload) => {
+    const account = store.getStore('account');
+    const nftPools = store.getStore('nftPools');
+    const { asset, poolID } = payload.content;
+    const web3 = new Web3(store.getStore('web3context').library.provider);
+    const nftContract = new web3.eth.Contract(asset, nftPools.nftAddress);
+    const tokenId = await nftContract.methods
+      .nftIndicies(account.address)
+      .call();
+
+    console.log('====', tokenId);
+
+    if (tokenId > 0) {
+      await nftContract.methods
+        .removeFromNftPool(poolID)
+        .send({ from: account.address, value: 0 });
+    }
+  };
+
   getBalancesPerpetual = async () => {
     const pools = store.getStore('rewardPools');
     const account = store.getStore('account');
@@ -354,19 +473,39 @@ class Store {
           (token, callbackInner) => {
             async.parallel(
               [
-                callbackInnerInner => {
-                  this._getERC20Balance(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getERC20Balance(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getstakedBalance(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getstakedBalance(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getRewardsAvailable(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getRewardsAvailable(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getTotalValueLocked(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getTotalValueLocked(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
+                (callbackInnerInner) => {
                   this._getRewardRate(web3, token, account, callbackInnerInner);
                 },
               ],
@@ -423,19 +562,39 @@ class Store {
           (token, callbackInner) => {
             async.parallel(
               [
-                callbackInnerInner => {
-                  this._getERC20Balance(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getERC20Balance(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getstakedBalance(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getstakedBalance(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getRewardsAvailable(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getRewardsAvailable(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
-                  this._getTotalValueLocked(web3, token, account, callbackInnerInner);
+                (callbackInnerInner) => {
+                  this._getTotalValueLocked(
+                    web3,
+                    token,
+                    account,
+                    callbackInnerInner
+                  );
                 },
-                callbackInnerInner => {
+                (callbackInnerInner) => {
                   this._getRewardRate(web3, token, account, callbackInnerInner);
                 },
               ],
@@ -482,15 +641,19 @@ class Store {
       const web3 = new Web3(store.getStore('web3context').library.provider);
 
       const erc20Contract = new web3.eth.Contract(asset.abi, asset.address);
-      const allowance = await erc20Contract.methods.allowance(account.address, contract).call({ from: account.address });
+      const allowance = await erc20Contract.methods
+        .allowance(account.address, contract)
+        .call({ from: account.address });
 
       const ethAllowance = web3.utils.fromWei(allowance, 'ether');
 
       if (parseFloat(ethAllowance) < parseFloat(amount)) {
-        await erc20Contract.methods.approve(contract, web3.utils.toWei('9999999999', 'ether')).send({
-          from: account.address,
-          gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
-        });
+        await erc20Contract.methods
+          .approve(contract, web3.utils.toWei('9999999999', 'ether'))
+          .send({
+            from: account.address,
+            gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
+          });
         callback();
       } else {
         callback();
@@ -504,10 +667,18 @@ class Store {
     }
   };
 
-  _checkApprovalWaitForConfirmation = async (asset, account, amount, contract, callback) => {
+  _checkApprovalWaitForConfirmation = async (
+    asset,
+    account,
+    amount,
+    contract,
+    callback
+  ) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
     let erc20Contract = new web3.eth.Contract(config.erc20ABI, asset.address);
-    const allowance = await erc20Contract.methods.allowance(account.address, contract).call({ from: account.address });
+    const allowance = await erc20Contract.methods
+      .allowance(account.address, contract)
+      .call({ from: account.address });
 
     const ethAllowance = web3.utils.fromWei(allowance, 'ether');
 
@@ -538,7 +709,9 @@ class Store {
     let erc20Contract = new web3.eth.Contract(config.erc20ABI, asset.address);
 
     try {
-      var balance = await erc20Contract.methods.balanceOf(account.address).call({ from: account.address });
+      var balance = await erc20Contract.methods
+        .balanceOf(account.address)
+        .call({ from: account.address });
       balance = parseFloat(balance) / 10 ** asset.decimals;
       callback(null, parseFloat(balance));
     } catch (ex) {
@@ -547,10 +720,15 @@ class Store {
   };
 
   _getstakedBalance = async (web3, asset, account, callback) => {
-    let erc20Contract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    let erc20Contract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     try {
-      var balance = await erc20Contract.methods.balanceOf(account.address).call({ from: account.address });
+      var balance = await erc20Contract.methods
+        .balanceOf(account.address)
+        .call({ from: account.address });
       balance = parseFloat(balance) / 10 ** asset.decimals;
       callback(null, parseFloat(balance));
     } catch (ex) {
@@ -559,10 +737,15 @@ class Store {
   };
 
   _getRewardsAvailable = async (web3, asset, account, callback) => {
-    let erc20Contract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    let erc20Contract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     try {
-      var earned = await erc20Contract.methods.earned(account.address).call({ from: account.address });
+      var earned = await erc20Contract.methods
+        .earned(account.address)
+        .call({ from: account.address });
       earned = parseFloat(earned) / 10 ** asset.decimals;
       callback(null, parseFloat(earned));
     } catch (ex) {
@@ -573,7 +756,9 @@ class Store {
   _getTotalValueLocked = async (web3, asset, account, callback) => {
     let lpTokenContract = new web3.eth.Contract(asset.abi, asset.address);
     try {
-      let tvl = await lpTokenContract.methods.balanceOf(asset.rewardsAddress).call({ from: account.address });
+      let tvl = await lpTokenContract.methods
+        .balanceOf(asset.rewardsAddress)
+        .call({ from: account.address });
       tvl = parseFloat(tvl) / 10 ** asset.decimals;
       callback(null, parseFloat(tvl));
     } catch (ex) {
@@ -582,9 +767,14 @@ class Store {
   };
 
   _getRewardRate = async (web3, asset, account, callback) => {
-    let rewardsPoolContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    let rewardsPoolContract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
     try {
-      let rewardRate = await rewardsPoolContract.methods.rewardRate().call({ from: account.address });
+      let rewardRate = await rewardsPoolContract.methods
+        .rewardRate()
+        .call({ from: account.address });
       rewardRate = parseFloat(rewardRate) / 10 ** asset.decimals;
       callback(null, parseFloat(rewardRate));
     } catch (ex) {
@@ -592,10 +782,22 @@ class Store {
     }
   };
 
-  _checkIfApprovalIsNeeded = async (asset, account, amount, contract, callback, overwriteAddress) => {
+  _checkIfApprovalIsNeeded = async (
+    asset,
+    account,
+    amount,
+    contract,
+    callback,
+    overwriteAddress
+  ) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
-    let erc20Contract = new web3.eth.Contract(config.erc20ABI, overwriteAddress ? overwriteAddress : asset.address);
-    const allowance = await erc20Contract.methods.allowance(account.address, contract).call({ from: account.address });
+    let erc20Contract = new web3.eth.Contract(
+      config.erc20ABI,
+      overwriteAddress ? overwriteAddress : asset.address
+    );
+    const allowance = await erc20Contract.methods
+      .allowance(account.address, contract)
+      .call({ from: account.address });
 
     const ethAllowance = web3.utils.fromWei(allowance, 'ether');
     if (parseFloat(ethAllowance) < parseFloat(amount)) {
@@ -606,15 +808,28 @@ class Store {
     }
   };
 
-  _callApproval = async (asset, account, amount, contract, last, callback, overwriteAddress) => {
+  _callApproval = async (
+    asset,
+    account,
+    amount,
+    contract,
+    last,
+    callback,
+    overwriteAddress
+  ) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
-    let erc20Contract = new web3.eth.Contract(config.erc20ABI, overwriteAddress ? overwriteAddress : asset.address);
+    let erc20Contract = new web3.eth.Contract(
+      config.erc20ABI,
+      overwriteAddress ? overwriteAddress : asset.address
+    );
     try {
       if (last) {
-        await erc20Contract.methods.approve(contract, web3.utils.toWei('9999999999', 'ether')).send({
-          from: account.address,
-          gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
-        });
+        await erc20Contract.methods
+          .approve(contract, web3.utils.toWei('9999999999', 'ether'))
+          .send({
+            from: account.address,
+            gasPrice: web3.utils.toWei(await this._getGasPrice(), 'gwei'),
+          });
         callback();
       } else {
         erc20Contract.methods
@@ -643,11 +858,11 @@ class Store {
     }
   };
 
-  stake = payload => {
+  stake = (payload) => {
     const account = store.getStore('account');
     const { asset, amount } = payload.content;
 
-    this._checkApproval(asset, account, amount, asset.rewardsAddress, err => {
+    this._checkApproval(asset, account, amount, asset.rewardsAddress, (err) => {
       if (err) {
         return emitter.emit(ERROR, err);
       }
@@ -665,7 +880,10 @@ class Store {
   _callStake = async (asset, account, amount, callback) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
 
-    const yCurveFiContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    const yCurveFiContract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     var amountToSend = web3.utils.toWei(amount, 'ether');
     if (asset.decimals !== 18) {
@@ -699,7 +917,7 @@ class Store {
           callback(error);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.toString().includes('-32601')) {
           if (error.message) {
             return callback(error.message);
@@ -709,7 +927,7 @@ class Store {
       });
   };
 
-  withdraw = payload => {
+  withdraw = (payload) => {
     const account = store.getStore('account');
     const { asset, amount } = payload.content;
 
@@ -725,7 +943,10 @@ class Store {
   _callWithdraw = async (asset, account, amount, callback) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
 
-    const yCurveFiContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    const yCurveFiContract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     var amountToSend = web3.utils.toWei(amount, 'ether');
     if (asset.decimals !== 18) {
@@ -759,7 +980,7 @@ class Store {
           callback(error);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.toString().includes('-32601')) {
           if (error.message) {
             return callback(error.message);
@@ -769,7 +990,7 @@ class Store {
       });
   };
 
-  getReward = payload => {
+  getReward = (payload) => {
     const account = store.getStore('account');
     const { asset } = payload.content;
 
@@ -785,7 +1006,10 @@ class Store {
   _callGetReward = async (asset, account, callback) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
 
-    const yCurveFiContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    const yCurveFiContract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     yCurveFiContract.methods
       .getReward()
@@ -814,7 +1038,7 @@ class Store {
           callback(error);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.toString().includes('-32601')) {
           if (error.message) {
             return callback(error.message);
@@ -824,7 +1048,7 @@ class Store {
       });
   };
 
-  exit = payload => {
+  exit = (payload) => {
     const account = store.getStore('account');
     const { asset } = payload.content;
 
@@ -840,7 +1064,10 @@ class Store {
   _callExit = async (asset, account, callback) => {
     const web3 = new Web3(store.getStore('web3context').library.provider);
 
-    const yCurveFiContract = new web3.eth.Contract(asset.rewardsABI, asset.rewardsAddress);
+    const yCurveFiContract = new web3.eth.Contract(
+      asset.rewardsABI,
+      asset.rewardsAddress
+    );
 
     yCurveFiContract.methods
       .exit()
@@ -869,7 +1096,7 @@ class Store {
           callback(error);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (!error.toString().includes('-32601')) {
           if (error.message) {
             return callback(error.message);
