@@ -9,6 +9,7 @@ import { colors } from "../../theme/theme";
 import config from "../../config";
 
 import gifNeonYellow from "../../assets/NFT-dark-backdrop-with-neon-yellow.gif";
+import gifComingSoon from "../../assets/logo.png";
 
 import {
   JOIN_POOL,
@@ -551,7 +552,7 @@ class NftPools extends Component {
     if (nftPool.poolName === "Atos") {
       this.setState({ showGif: true, gif: gifNeonYellow });
     } else if (nftPool.poolName === "Johnny") {
-      this.setState({ showGif: true });
+      this.setState({ showGif: true, gif: gifComingSoon });
     }
     this.navigateNft(nftPool);
   };
