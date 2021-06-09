@@ -1,22 +1,30 @@
-import React, { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import IpfsRouter from 'ipfs-react-router';
+import React, { Component } from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Switch, Route, Redirect } from "react-router-dom";
+import IpfsRouter from "ipfs-react-router";
 
-import './i18n';
-import interestTheme from './theme';
+import "./i18n";
+import interestTheme from "./theme";
 
-import Account from './components/account';
-import Stake from './components/stake';
-import RewardsPools from './components/rewardPools';
-import Layout from './components/layout';
+import Account from "./components/account";
+import Stake from "./components/stake";
+import RewardsPools from "./components/rewardPools";
+import NftPools from "./components/nftPools";
+import Layout from "./components/layout";
 
-import { CONNECTION_CONNECTED, CONNECTION_DISCONNECTED, CONFIGURE, CONFIGURE_RETURNED, GET_BALANCES_PERPETUAL, GET_BALANCES_PERPETUAL_RETURNED } from './constants';
+import {
+  CONNECTION_CONNECTED,
+  CONNECTION_DISCONNECTED,
+  CONFIGURE,
+  CONFIGURE_RETURNED,
+  GET_BALANCES_PERPETUAL,
+  GET_BALANCES_PERPETUAL_RETURNED,
+} from "./constants";
 
-import { injected } from './stores/connectors';
+import { injected } from "./stores/connectors";
 
-import Store from './stores';
+import Store from "./stores";
 const emitter = Store.emitter;
 const dispatcher = Store.dispatcher;
 const store = Store.store;
@@ -27,7 +35,7 @@ class App extends Component {
     headerValue: null,
   };
 
-  setHeaderValue = newValue => {
+  setHeaderValue = (newValue) => {
     this.setState({ headerValue: newValue });
   };
 
@@ -37,18 +45,18 @@ class App extends Component {
     emitter.on(CONFIGURE_RETURNED, this.configureReturned);
     emitter.on(GET_BALANCES_PERPETUAL_RETURNED, this.getBalancesReturned);
 
-    injected.isAuthorized().then(isAuthorized => {
+    injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
         injected
           .activate()
-          .then(a => {
+          .then((a) => {
             store.setStore({
               account: { address: a.account },
               web3context: { library: { provider: a.provider } },
             });
             emitter.emit(CONNECTION_CONNECTED);
           })
-          .catch(e => {
+          .catch((e) => {
             console.log(e);
           });
       } else {
@@ -74,12 +82,12 @@ class App extends Component {
   };
 
   connectionConnected = () => {
-    this.setState({ account: store.getStore('account') });
+    this.setState({ account: store.getStore("account") });
     dispatcher.dispatch({ type: CONFIGURE, content: {} });
   };
 
   connectionDisconnected = () => {
-    this.setState({ account: store.getStore('account') });
+    this.setState({ account: store.getStore("account") });
   };
 
   render() {
@@ -92,12 +100,12 @@ class App extends Component {
           {!account && (
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100vh',
-                width: '100vw',
-                justifyContent: 'center',
-                alignItems: 'center',
+                display: "flex",
+                flexDirection: "column",
+                height: "100vh",
+                width: "100vw",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Account />
@@ -106,10 +114,11 @@ class App extends Component {
           {account && (
             <Layout>
               <Switch>
-                <Route path='/stake' component={Stake} />
-                <Route path='/staking' component={RewardsPools} />
-                <Route path='/'>
-                  <Redirect to='/staking' />
+                <Route path="/stake" component={Stake} />
+                <Route path="/staking" component={RewardsPools} />
+                <Route path="/nft" component={NftPools} />
+                <Route path="/">
+                  <Redirect to="/staking" />
                 </Route>
               </Switch>
             </Layout>
