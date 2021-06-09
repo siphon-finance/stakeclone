@@ -81,7 +81,7 @@ const styles = (theme) => ({
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
   nftPoolContainer: {
     display: "flex",
@@ -300,7 +300,6 @@ class NftPools extends Component {
 
   componentWillUnmount() {
     emitter.removeListener(CONFIGURE_RETURNED, this.configureReturned);
-    emitter.removeListener(GET_BALANCES_RETURNED, this.balancesReturned);
   }
 
   nftPoolsReceived = () => {
@@ -331,10 +330,26 @@ class NftPools extends Component {
 
   renderNfts = () => {
     const { nftPools } = this.state;
+    const { classes } = this.props;
 
-    return nftPools.poolInfo.map((nftPool) => {
-      return this.renderNftPool(nftPool);
-    });
+    return (
+      <>
+        <div className={classes.intro}>
+          <Button
+            className={classes.actionButton}
+            style={{ marginBottom: "2rem" }}
+            onClick={() => {
+              this.props.history.push("/staking");
+            }}
+          >
+            Staking
+          </Button>
+        </div>
+        {nftPools.poolInfo.map((nftPool) => {
+          return this.renderNftPool(nftPool);
+        })}
+      </>
+    );
   };
 
   renderCurrentPool = () => {
