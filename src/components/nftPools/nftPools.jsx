@@ -8,6 +8,8 @@ import Store from '../../stores/store';
 import { colors } from '../../theme/theme';
 import config from '../../config';
 
+import gifNeonYellow from '../../assets/NFT-dark-backdrop-with-neon-yellow.gif'
+
 import {
   JOIN_POOL,
   REMOVE_POOL,
@@ -254,6 +256,19 @@ const styles = (theme) => ({
     width: '100%',
     textAlign: 'center',
   },
+  nftGif: {
+    width: '15em'
+  },
+  nftGifContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '260px',
+    padding: '2rem 3rem',
+    borderRadius: '5px',
+    background: '#504F69',
+  },
 });
 
 const emitter = Store.emitter;
@@ -272,6 +287,8 @@ class NftPools extends Component {
       loading: !(account && nftPools),
       account: account,
       currentPool: null,
+      showGif: false,
+      gif: null,
     };
 
     dispatcher.dispatch({ type: NFT_POOL, content: { asset: config.nftABI } });
@@ -320,9 +337,10 @@ class NftPools extends Component {
     });
   };
 
+
   renderCurrentPool = () => {
     const nftPools = store.getStore('nftPools');
-    const { currentPool } = this.state;
+    const { currentPool, showGif, gif } = this.state;
     const { classes } = this.props;
 
     console.log('========', currentPool);
@@ -340,6 +358,11 @@ class NftPools extends Component {
             Back
           </Button>
         </div>
+
+        {showGif && <div className={classes.nftGifContainer}>
+            <img className={classes.nftGif} src={gif} alt=""/>
+        </div>}
+
         <div className={classes.overview}>
           <div className={classes.overviewLogo}>
             <img
@@ -455,6 +478,7 @@ class NftPools extends Component {
 
     let address = null;
     let addy = '';
+    
     if (nftPools) {
       addy = nftPools.nftAddress;
       address =
@@ -499,9 +523,7 @@ class NftPools extends Component {
         <Button
           className={classes.actionButton}
           onClick={() => {
-            if (nftPools.poolLength > 0) {
-              this.navigateNft(nftPool);
-            }
+            this.handleOpenButton(nftPool)
           }}
         >
           Open
@@ -509,6 +531,17 @@ class NftPools extends Component {
       </div>
     );
   };
+
+  handleOpenButton = (nftPool) => {
+    console.log(nftPool)
+
+    if (nftPool.poolName === "Atos") {
+      this.setState({showGif: true, gif: gifNeonYellow});
+    } else if (nftPool.poolName === "Johnny"){
+      this.setState({showGif: true});
+    }
+    this.navigateNft(nftPool)
+  }
 
   navigateNft = (nftPool) => {
     this.setState({ currentPool: nftPool });
