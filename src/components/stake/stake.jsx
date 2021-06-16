@@ -321,7 +321,7 @@ class Stake extends Component {
 
           <div className={classes.overviewField}>
             <Typography variant={'h3'} className={classes.overviewValue}>
-              {`${pool.tokens[0].rewardsAvailable.toFixed(3)} ${pool.tokens[0].rewardsSymbol}`}
+              {`${pool.tokens[0].rewardsAvailable.toFixed(5)} ${pool.tokens[0].rewardsSymbol}`}
             </Typography>
             <Typography variant={'h4'} className={classes.overviewTitle}>
               Rewards Available
