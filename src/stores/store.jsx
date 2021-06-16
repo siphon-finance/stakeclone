@@ -61,6 +61,34 @@ class Store {
       rewardPools: [
 
         {
+          id: 'cdmc',
+          logo: 'cdmc.png',
+          name: 'SPHN',
+          brief: 'earns CDMC',
+          link: 'https://t.me/coindemic',
+          depositsEnabled: true,
+          tokens: [
+            {
+              id: 'sphn-cdmc',
+              logo: 'cdmc.png',
+              address: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
+              symbol: 'SPHN',
+              abi: config.erc20ABI,
+              rewardsToken: '0xef52250c313df3321ce27290092cd9e984e6f33a',
+              rewardsAddress: '0x957049EFB41f31aB0204414ebB84db087aD03B1F',
+              rewardsABI: config.govPoolABI,
+              rewardsSymbol: 'CDMC',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+              rewardRate: 0,
+            },
+          ],
+        },
+
+        {
           id: 'fts',
           logo: 'fts.svg',
           name: 'SPHN',
@@ -87,7 +115,6 @@ class Store {
             },
           ],
         },
-
         {
           id: 'BUSD',
           logo: 'BUSD.svg',
