@@ -61,6 +61,33 @@ class Store {
       rewardPools: [
 
         {
+          id: 'alloy',
+          logo: 'alloy.png',
+          name: 'SPHN',
+          brief: 'earns ALLOY',
+          link: 'https://hyperjump.fi',
+          depositsEnabled: true,
+          tokens: [
+            {
+              id: 'sphn-alloy',
+              logo: 'alloy.png',
+              address: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
+              symbol: 'SPHN',
+              abi: config.erc20ABI,
+              rewardsToken: '0x5ef5994fa33ff4eb6c82d51ee1dc145c546065bd',
+              rewardsAddress: '0x1b11e43c80c341F3721b32EDAee1C46986C3A8f8',
+              rewardsABI: config.govPoolABI,
+              rewardsSymbol: 'ALLOY',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+              rewardRate: 0,
+            },
+          ],
+        },
+                {
           id: 'cdmc',
           logo: 'cdmc.png',
           name: 'SPHN',
