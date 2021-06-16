@@ -232,7 +232,7 @@ class Stake extends Component {
     const { rewardRate } = pool.tokens[0];
     const dailyRewards = rewardRate * 86400;
     const userDailyRewards = (dailyRewards * this.calcUserPoolPercentage()) / 100;
-    return userDailyRewards.toFixed(3);
+    return userDailyRewards.toFixed(5);
   };
 
   balancesReturned = () => {
