@@ -203,7 +203,7 @@ class RewardPools extends Component {
           </Helmet>
 
         <Typography variant={'h5'} className={classes.disclaimer}>
-          This project is in Beta. Audit still in progress DYOR.
+          Stake your SPHN to earn tokens (new pools every week!).
         </Typography>
         <div className={classes.priceBox}>
           <h4 className={classes.showPrice}>SPHN: ${(parseInt (this.state.sphnPrice.priceUSD * 100) / 100).toFixed(2) }</h4>
