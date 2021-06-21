@@ -116,7 +116,7 @@ class Store {
                 {
           id: 'cdmc',
           logo: 'cdmc.png',
-          name: 'ENDED',
+          name: 'SPHN',
           brief: 'earns CDMC',
           link: 'https://t.me/coindemic',
           depositsEnabled: true,
