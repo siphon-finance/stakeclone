@@ -89,8 +89,8 @@ class Store {
                 {
           id: 'alloynew',
           logo: 'alloy.png',
-          name: 'SPHN earns ALLOY',
-          brief: 'perma-pool',
+          name: 'SPHN',
+          brief: 'ALLOY perma-pool',
           link: 'https://hyperjump.fi',
           depositsEnabled: true,
           tokens: [
@@ -117,8 +117,8 @@ class Store {
           {
           id: 'BUSDnew',
           logo: 'BUSD.svg',
-          name: 'SPHN earns BUSD',
-          brief: 'perma-pool',
+          name: 'SPHN',
+          brief: 'BUSD perma-pool',
           link: 'https://binance.org',
           depositsEnabled: true,
           tokens: [
