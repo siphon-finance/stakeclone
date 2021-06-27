@@ -60,7 +60,7 @@ class Store {
 
       rewardPools: [
           {
-          id: 'farm',
+          id: 'farmnew',
           logo: 'sfnobg.png',
           name: 'SPHN/BNB hyperLP',
           brief: 'earns SPHN',
@@ -68,13 +68,13 @@ class Store {
           depositsEnabled: true,
           tokens: [
             {
-              id: 'sphn-farm',
+              id: 'sphn-farmnew',
               logo: 'sfnobg.png',
               address: '0x402E6B9F9A2959d6f4eb398071d90270a6583C73',
               symbol: 'SPHN-BNB hyperLP',
               abi: config.erc20ABI,
               rewardsToken: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
-              rewardsAddress: '0xd2775ac622c48dc205Bdf74053FB9d2b695C561d',
+              rewardsAddress: '0xe46a1d9d043D74561e889C8Dd521cf3D5663736C',
               rewardsABI: config.govPoolABI,
               rewardsSymbol: 'SPHN',
               decimals: 18,
@@ -132,6 +132,33 @@ class Store {
               rewardsAddress: '0xCa8Ee9c4F51e6513B06be4a35E90B99a0Fa22B3b',
               rewardsABI: config.govPoolABI,
               rewardsSymbol: 'BUSD',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+              rewardRate: 0,
+            },
+          ],
+        },
+                  {
+          id: 'farm',
+          logo: 'sfnobg.png',
+          name: 'SPHN/BNB hyperLP',
+          brief: 'earns SPHN',
+          link: 'https://siphon.finance',
+          depositsEnabled: true,
+          tokens: [
+            {
+              id: 'sphn-farm',
+              logo: 'sfnobg.png',
+              address: '0x402E6B9F9A2959d6f4eb398071d90270a6583C73',
+              symbol: 'SPHN-BNB hyperLP',
+              abi: config.erc20ABI,
+              rewardsToken: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
+              rewardsAddress: '0xd2775ac622c48dc205Bdf74053FB9d2b695C561d',
+              rewardsABI: config.govPoolABI,
+              rewardsSymbol: 'SPHN',
               decimals: 18,
               balance: 0,
               stakedBalance: 0,
