@@ -144,10 +144,10 @@ class Store {
                   {
           id: 'farm',
           logo: 'sfnobg.png',
-          name: 'SPHN/BNB hyperLP',
+          name: 'ENDED',
           brief: 'earns SPHN',
           link: 'https://siphon.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-farm',
@@ -174,7 +174,7 @@ class Store {
           name: 'ENDED',
           brief: 'earns ALLOY',
           link: 'https://hyperjump.fi',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-alloy',
@@ -203,7 +203,7 @@ class Store {
           name: 'ENDED',
           brief: 'earns CDMC',
           link: 'https://t.me/coindemic',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-cdmc',
@@ -259,7 +259,7 @@ class Store {
           name: 'ENDED',
           brief: 'earns ALLOY',
           link: 'https://hyperjump.fi',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-alloyno',
@@ -286,7 +286,7 @@ class Store {
           name: 'ENDED',
           brief: 'earns CDMC',
           link: 'https://t.me/coindemic',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-cdmcno',
