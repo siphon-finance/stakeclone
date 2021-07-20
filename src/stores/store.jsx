@@ -92,7 +92,7 @@ class Store {
           name: 'SPHN',
           brief: 'earns WINGS',
           link: 'https://jetswap.finance',
-          depositsEnabled: false,
+          depositsEnabled: true,
           tokens: [
             {
               id: 'sphn-wings',
