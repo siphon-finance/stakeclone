@@ -117,10 +117,10 @@ class Store {
                         {
           id: 'wings',
           logo: 'wings.jpg',
-          name: 'SPHN',
+          name: 'ENDED',
           brief: 'earns WINGS until 13/08/21',
           link: 'https://jetswap.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-wings',
@@ -144,10 +144,10 @@ class Store {
                   {
           id: 'wingsold',
           logo: 'wings.jpg',
-          name: 'SPHN',
+          name: 'ENDED',
           brief: 'earns WINGS until 03/08/21',
           link: 'https://jetswap.finance',
-          depositsEnabled: true,
+          depositsEnabled: false,
           tokens: [
             {
               id: 'sphn-wingsold',
