@@ -64,7 +64,7 @@ class Store {
           logo: 'sfnobg.png',
           name: 'PCS-LP',
           brief: 'get the gecko SPHN/BNB PCS LP earns SPHN',
-          link: 'https://siphon.finance',
+          link: 'https://pancakeswap.finance/add/BNB/0xb58a579e8f987b52564A5fE08Fe5181dc2621a9c',
           depositsEnabled: true,
           tokens: [
             {
