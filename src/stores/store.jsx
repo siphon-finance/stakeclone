@@ -59,6 +59,34 @@ class Store {
       proposals: [],
 
       rewardPools: [
+                  {
+          id: 'farmpcs',
+          logo: 'sfnobg.png',
+          name: 'PCS-LP',
+          brief: 'get the gecko SPHN/BNB PCS LP earns SPHN',
+          link: 'https://siphon.finance',
+          depositsEnabled: true,
+          tokens: [
+            {
+              id: 'sphn-farmpcs',
+              logo: 'sfnobg.png',
+              address: '0xe6b3b02cefaaca05635cadfe4ebb1dfbbde60732',
+              symbol: 'SPHN-BNB hyperLP',
+              abi: config.erc20ABI,
+              rewardsToken: '0xb58a579e8f987b52564a5fe08fe5181dc2621a9c',
+              rewardsAddress: '0xDf904f97C2574f5F3837f1cD36C01479d22437C6',
+              rewardsABI: config.govPoolABI,
+              rewardsSymbol: 'SPHN',
+              decimals: 18,
+              balance: 0,
+              stakedBalance: 0,
+              rewardsAvailable: 0,
+              tvl: 0,
+              rewardRate: 0,
+            },
+          ],
+        },
+
           {
           id: 'BUSDnew',
           logo: 'BUSD.svg',
